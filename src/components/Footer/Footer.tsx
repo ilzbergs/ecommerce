@@ -5,22 +5,22 @@ import { faTwitter } from "@fortawesome/free-brands-svg-icons"
 import { faInstagram } from "@fortawesome/free-brands-svg-icons"
 
 const FooterText = styled.footer`
-text-align: center;
-padding-bottom: 1rem;
-font-size: 12px;
+  text-align: center;
+  padding-bottom: 1rem;
+  font-size: 12px;
 `
 const SocialBar = styled.div`
-align-items: center;
-text-align: center;
-margin-bottom: 1rem;
-display: flex;
-justify-content: center;
-font-size: 18px;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
 `
-const SocIcons = styled.div`
-cursor: pointer;
- padding: 20px;
-
+const SocIcons = styled.a`
+  cursor: pointer;
+  padding: 20px;
+  display: block;
 `
 const Footer: React.FC = () => {
   return (
@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
           <FontAwesomeIcon icon={faTwitter} onClick={() => { console.log('clicked Twitter') }}></FontAwesomeIcon>
         </SocIcons>
         <SocIcons>
-          <FontAwesomeIcon icon={faInstagram} onClick={() => { console.log('clicked Instagram') }}></FontAwesomeIcon>
+          <FontAwesomeIcon icon={faInstagram} onClick={() => { alert("test")}}></FontAwesomeIcon>
         </SocIcons>
 
       </SocialBar>

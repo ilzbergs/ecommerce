@@ -9,13 +9,31 @@ text-align: center;
 align-items: center;
 display: flex;
 justify-content: center;
-margin: 10px auto;
+margin: 20px;
+cursor: pointer;
+@media screen and (min-width: 426px) {
+  width: 255px;
+  height: 125px;
+}
+@media screen and (min-width: 1024px) {
+ width: 205px;
+  height: 170px;
+}
+`
+const Wrap = styled.div`
+display: flex;
+flex-flow: row wrap;
+width: 100%;
+max-width:64rem;
+margin-bottom:50px;
+justify-content:center;
 `
 
 const Card: React.FC = () => {
     return (
         <>
-            <StyledCard>
+        <Wrap>
+           <StyledCard>
                 <img src='' alt="" />
                 <div>Category 1</div>
             </StyledCard>
@@ -38,7 +56,9 @@ const Card: React.FC = () => {
             <StyledCard>
                 <img src='' alt="" />
                 <div>Category 6</div>
-            </StyledCard>
+            </StyledCard>     
+        </Wrap>
+           
         </>
 
 

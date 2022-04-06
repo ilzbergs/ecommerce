@@ -1,6 +1,7 @@
 import SimpleImageSlider from "react-simple-image-slider";
 import styled from "styled-components";
 
+
 const StyledSlider = styled.div`
 margin-bottom: 55px;
 `
@@ -15,6 +16,7 @@ const images = [
 
 const Slider: React.FC = () => {
     return (
+        <>
         <StyledSlider>
             <SimpleImageSlider
                 width={300}
@@ -22,9 +24,8 @@ const Slider: React.FC = () => {
                 images={images}
                 showBullets={true}
                 showNavs={true}
-                navStyle={1}
-            />
-        </StyledSlider>
+                navStyle={1} />
+        </StyledSlider></>
     );
 }
 

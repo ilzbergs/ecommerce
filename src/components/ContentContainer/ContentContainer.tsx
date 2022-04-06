@@ -10,6 +10,7 @@ const Container = styled.div`
     justify-content:center;
     align-items: center;
     margin-bottom: 2rem;
+    background-color: #faf9f9;
 `
 
 const ContentContainer: React.FC = ({ children }) => {

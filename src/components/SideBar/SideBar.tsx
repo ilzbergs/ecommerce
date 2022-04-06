@@ -1,14 +1,31 @@
 import styled from "styled-components"
 
 
-const Sidebar = styled.aside`
+const Wrapper = styled.aside`
 display: none;
+width: 120px;
+
+
+
+
+
+
 `
 
+
 const SideBar: React.FC = () => {
-   return(
-       <Sidebar>This is sidebar</Sidebar>
-   )
+    return (
+        <Wrapper>
+            <div>Category list</div>
+            <div>Category 1</div>
+            <div>Category 2</div>
+            <div>Category 3</div>
+            <div>Category 4</div>
+            <div>Category 5</div>
+            <div>Category 6</div>
+
+        </Wrapper>
+    )
 }
 
 export default SideBar

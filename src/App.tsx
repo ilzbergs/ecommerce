@@ -8,7 +8,10 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     width: 100%;
+    height: auto;
     font-family: sans-serif;
+    display: flex;
+    justify-content: center;
   }
 `
 
@@ -16,9 +19,9 @@ function App() {
   return (
     <><GlobalStyle />
       <BrowserRouter>
-        <Nav />
+        <Nav/>
         <Routes>
-          <Route path="/" element={<HomePage/>} />
+          <Route path="/" element={<HomePage />} />
         </Routes>
       </BrowserRouter></>
   );
