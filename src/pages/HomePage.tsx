@@ -5,13 +5,13 @@ import SideBar from "../components/SideBar/SideBar"
 import Slider from "../components/Slider/Slider"
 
 
+
 const HomePage: React.FC = () => {
     return (
         <>
-    
+
             <ContentContainer>
-                    <SideBar/>
-                    
+                <SideBar />
                 <Slider />
                 <Card />
             </ContentContainer>

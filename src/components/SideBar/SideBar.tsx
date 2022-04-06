@@ -4,6 +4,9 @@ import styled from "styled-components"
 const Wrapper = styled.aside`
 display: none;
 width: 120px;
+@media screen and (min-width: 1024px) {
+ display: block;
+}
 
 
 
