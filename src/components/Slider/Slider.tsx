@@ -3,7 +3,10 @@ import styled from "styled-components";
 
 
 const StyledSlider = styled.div`
-margin-bottom: 55px;
+    margin-bottom: 55px;
+    justify-content: center;
+    display: flex;
+    padding-top: 34px;
 `
 
 const images = [
