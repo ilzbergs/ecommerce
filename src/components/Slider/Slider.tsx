@@ -8,6 +8,12 @@ const StyledSlider = styled.div`
     display: flex;
     padding-top: 34px;
 `
+const StyledImages = styled(SimpleImageSlider)`
+ background-color: red;
+ width: 320px;
+ height: 220px;
+  
+`
 
 const images = [
     { url: "https://media.wired.com/photos/593261cab8eb31692072f129/master/pass/85120553.jpg" },
@@ -21,13 +27,16 @@ const Slider: React.FC = () => {
     return (
         <>
         <StyledSlider>
-            <SimpleImageSlider
+            <StyledImages
                 width={300}
                 height={200}
                 images={images}
                 showBullets={true}
                 showNavs={true}
-                navStyle={1} />
+                navStyle={1}
+                autoPlayDelay={2}
+                slideDuration={2} 
+                autoPlay={true}/>
         </StyledSlider></>
     );
 }

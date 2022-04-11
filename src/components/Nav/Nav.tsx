@@ -8,6 +8,9 @@ import React, { useRef } from 'react';
 import { faUser } from "@fortawesome/free-solid-svg-icons"
 import { faHeart } from "@fortawesome/free-solid-svg-icons"
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons"
+import { Button, Menu, MenuItem } from "@mui/material"
+
+
 
 const NavBar = styled.header`
     position: absolute;
@@ -31,97 +34,108 @@ const Logo = styled.a`
     background-repeat: no-repeat; 
 `
 const NavLink = styled(Link)`
-width: 100%;
+    width: 100%;
     min-width: 4rem;
+    padding: 0 10px;
     text-decoration: none;
-    cursor: pointer;
-    padding: 20px;
-   
     &:visited {
         color: #112D4E;
     }
 `
 const NavWrapper = styled.div`
-    margin-right: 1rem;
+  
     @media screen and (min-width: 480px) {
     display: none;
 }
 `
 const NavWrapperTablet = styled.div`
     margin-right: 1rem;
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 479px) {
     display: none;
 }
 `
 
 const Input = styled.input`
     position: absolute;
-    z-index: 1;
-    top: 1.3rem;
     right: 7rem;
+    top: 1.15rem;
     border: 1px solid;
     border-radius: 5px;
     width: 150px;
+    height: 1.5rem;
+    border: 0;
+    z-index: 1;
+    box-shadow:0px 5px 5px -3px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 10px 2px rgb(0 0 0 / 12%);
      @media screen and (min-width: 480px) {
-    right:14rem
+    right:14rem;
+    box-shadow: none;
 }
 `
-const DropDown = styled.div`
-    position: absolute;
-    top: 3rem;
-    min-width: 6rem;
-    height: auto;
-    background: #eeeeed;
-    z-index: 1;
-    line-height: 2rem;
-    text-align: left;
-    border: 1px solid;
-    border-radius: 5px;
-    padding: 5px;
+
+const Search = styled.div`
+position: absolute;
+top: 1.5rem;
+right: 14.5rem;
+z-index: 1;
 `
 
+
 const Nav: React.FC = () => {
-    const [isOpen, setIsOpen] = useState(false)
     const [showInput, setShowInput] = useState(false)
-    const ref = useRef<HTMLDivElement>(null)
-
-    // useEffect(() => {
-    //     const handleClickOutside = (event: { target: any }) => {
-    //         if (!ref.current.contains(event.target)) {
-    //             setIsOpen(false);
-    //         }
-    //     };
-    //     document.addEventListener("mousedown", handleClickOutside);
-    // }, [ref]);
-
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     return (
         <NavBar>
             <Logo href="/" />
             <NavWrapper>
+              
                 <NavLink to="">
-                    <FontAwesomeIcon icon={faSearch} onClick={() => setShowInput(!showInput)}></FontAwesomeIcon>
+                    <FontAwesomeIcon icon={faSearch}  onClick={() => setShowInput(!showInput)}></FontAwesomeIcon>
                     {showInput && (
                         <Input type="text" placeholder="Search for..."></Input>
                     )}
                 </NavLink>
-                <NavLink to="">
-                    <FontAwesomeIcon icon={faBars} onClick={() => setIsOpen(!isOpen)} ></FontAwesomeIcon>
-                    {isOpen && (
-                        <DropDown ref={ref}>
-                            <div>User</div>
-                            <div>Wishlist</div>
-                            <div>Shopping Cart</div>
-                        </DropDown>
-                    )
-                    }
+                <NavLink to="/">
+                    <Button
+                        id="fade-button"
+                        aria-controls={open ? 'fade-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? 'true' : undefined}
+                        onClick={handleClick}
+                        color={'primary'}
+                    >
+                        <FontAwesomeIcon icon={faBars} fontSize='20' color="#112D4E"></FontAwesomeIcon>
+                    </Button>
+                    <Menu
+                        id="fade-menu"
+                        MenuListProps={{
+                            'aria-labelledby': 'fade-button',
+                        }}
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                    >
+                        <MenuItem onClick={handleClose}>User</MenuItem>
+                        <MenuItem onClick={handleClose}>Wishlist</MenuItem>
+                        <MenuItem onClick={handleClose}>My Cart</MenuItem>
+                    </Menu>
                 </NavLink>
+
             </NavWrapper>
             <NavWrapperTablet>
+                <Input type="text" placeholder="Search for..." name="searchInput" id="searchInput" autoComplete="off" />
                 <NavLink to=''>
-                    <Input type="text" placeholder="Search for..." name="searchInput" id="searchInput" autoComplete="off" />
-                        <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>                  
-                </NavLink>
+                      <Search>
+                    <FontAwesomeIcon icon={faSearch} color="#112D4E"></FontAwesomeIcon>
+                </Search>
+                </NavLink>              
                 <NavLink to=''>
                     <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
                 </NavLink>

@@ -4,6 +4,10 @@ import { createGlobalStyle } from 'styled-components';
 import Nav from './components/Nav/Nav';
 import HomePage from './pages/HomePage'
 const GlobalStyle = createGlobalStyle`
+*{
+  box-sizing: border-box;
+}
+
   body {
     margin: 0;
     padding: 0;
@@ -19,7 +23,7 @@ function App() {
   return (
     <><GlobalStyle />
       <BrowserRouter>
-        <Nav/>
+        <Nav />
         <Routes>
           <Route path="/" element={<HomePage />} />
         </Routes>
