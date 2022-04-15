@@ -14,8 +14,8 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: auto;
     font-family: sans-serif;
-    display: flex;
-    justify-content: center;
+   display: flex;
+   justify-content: center;
   }
 `
 

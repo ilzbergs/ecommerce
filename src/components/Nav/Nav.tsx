@@ -1,29 +1,40 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { useState } from "react"
-import React, { useRef } from 'react';
-import { faUser } from "@fortawesome/free-solid-svg-icons"
-import { faHeart } from "@fortawesome/free-solid-svg-icons"
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons"
+import React from 'react';
 import { Button, Menu, MenuItem } from "@mui/material"
+import { AiOutlineUser, AiOutlineHeart, AiOutlineShoppingCart, AiOutlineSearch,} from "react-icons/ai";
+import { FaBars} from "react-icons/fa";
 
 
-
-const NavBar = styled.header`
-    position: absolute;
+const Header = styled.div`
+    display: flex;
+    padding: 0;
     width: 100%;
     max-width: 64rem;
-    height: 4rem;
-    top:0;
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: space-between;
     background-color: aliceblue;
+    align-items: center;
+    justify-content: center;
+      @media screen and (min-width: 430px) {
+    padding: 1.5rem;
+}
 `
+const HeaderSection1 = styled.div`
+    width: calc(100%/3);
+    display: flex;
+    justify-content: flex-start;
+`
+const HeaderSection2 = styled.div`
+    width: calc(100%/3);
+    display: flex;
+    justify-content: flex-end;
+`
+const HeaderSection3 = styled.div`
+    width: calc(100%/3);
+    display: flex;
+    justify-content: flex-end;
+`
+
 const Logo = styled.a`
     width: 5rem;
     height: 2rem;
@@ -35,50 +46,72 @@ const Logo = styled.a`
 `
 const NavLink = styled(Link)`
     width: 100%;
-    min-width: 4rem;
-    padding: 0 10px;
+    padding:5px;
     text-decoration: none;
     &:visited {
         color: #112D4E;
     }
+     @media screen and (min-width: 768px) {
+  padding: 15px;
+    }
 `
 const NavWrapper = styled.div`
-  
-    @media screen and (min-width: 480px) {
+display: flex;
+align-items: center;
+    @media screen and (min-width: 430px) {
     display: none;
 }
 `
 const NavWrapperTablet = styled.div`
-    margin-right: 1rem;
-    @media screen and (max-width: 479px) {
+    @media screen and (max-width: 429px) {
     display: none;
 }
 `
-
-const Input = styled.input`
-    position: absolute;
-    right: 7rem;
-    top: 1.15rem;
-    border: 1px solid;
-    border-radius: 5px;
-    width: 150px;
-    height: 1.5rem;
-    border: 0;
-    z-index: 1;
-    box-shadow:0px 5px 5px -3px rgb(0 0 0 / 20%), 0px 8px 10px 1px rgb(0 0 0 / 14%), 0px 3px 10px 2px rgb(0 0 0 / 12%);
-     @media screen and (min-width: 480px) {
-    right:14rem;
-    box-shadow: none;
-}
-`
-
 const Search = styled.div`
-position: absolute;
-top: 1.5rem;
-right: 14.5rem;
-z-index: 1;
+    color: #112D4E;
+  width: 235px;
+  min-width: 155px;
+  max-width: 235px;
+   height: 35px;
+   border-radius: 30px;
+   display: flex;
+   background-color: white;
+   align-items: center;
+   padding: 10px;
+    @media screen and (max-width: 429px) {
+        display: none;
+    }
+       @media screen and (max-width: 768px) {
+  width:155px;
+  height: 25px;
+    }
 `
-
+const Input = styled.input`
+     height: 25px;
+     width: 120px;
+     border: none;
+     outline: none;
+     border-radius: 35px;
+       @media screen and (min-width: 769px) {
+        width: 200px;
+        height: 35px;
+    }
+`
+const SearchIcon = styled.i`
+    font-size: 24px;
+   position: absolute;
+   top: 30px;
+`
+const Icon = styled.i`
+    font-size: 24px;
+     @media screen and (min-width: 768px) {
+   font-size: 30px;
+    }
+`
+const OpenSearch= styled.div`
+  display: flex;
+ flex-direction: row-reverse;
+`
 
 const Nav: React.FC = () => {
     const [showInput, setShowInput] = useState(false)
@@ -92,64 +125,74 @@ const Nav: React.FC = () => {
     };
 
     return (
-        <NavBar>
-            <Logo href="/" />
-            <NavWrapper>
-              
-                <NavLink to="">
-                    <FontAwesomeIcon icon={faSearch}  onClick={() => setShowInput(!showInput)}></FontAwesomeIcon>
-                    {showInput && (
-                        <Input type="text" placeholder="Search for..."></Input>
-                    )}
-                </NavLink>
-                <NavLink to="/">
-                    <Button
-                        id="fade-button"
-                        aria-controls={open ? 'fade-menu' : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open ? 'true' : undefined}
-                        onClick={handleClick}
-                        color={'primary'}
-                    >
-                        <FontAwesomeIcon icon={faBars} fontSize='20' color="#112D4E"></FontAwesomeIcon>
-                    </Button>
-                    <Menu
-                        id="fade-menu"
-                        MenuListProps={{
-                            'aria-labelledby': 'fade-button',
-                        }}
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleClose}
-                    >
-                        <MenuItem onClick={handleClose}>User</MenuItem>
-                        <MenuItem onClick={handleClose}>Wishlist</MenuItem>
-                        <MenuItem onClick={handleClose}>My Cart</MenuItem>
-                    </Menu>
-                </NavLink>
 
-            </NavWrapper>
-            <NavWrapperTablet>
-                <Input type="text" placeholder="Search for..." name="searchInput" id="searchInput" autoComplete="off" />
-                <NavLink to=''>
-                      <Search>
-                    <FontAwesomeIcon icon={faSearch} color="#112D4E"></FontAwesomeIcon>
+        <Header>
+            <HeaderSection1>
+                <Logo href="/" />
+            </HeaderSection1>
+            <HeaderSection2>
+                <Search>
+                    <label htmlFor="search">
+                        <Input type="text" id="search" name="search" placeholder="Search for..."/>
+                        <SearchIcon>< AiOutlineSearch /></SearchIcon>
+                    </label>
                 </Search>
-                </NavLink>              
-                <NavLink to=''>
-                    <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
-                </NavLink>
-                <NavLink to=''>
-                    <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
-                </NavLink>
-                <NavLink to=''>
-                    <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
-                </NavLink>
-            </NavWrapperTablet>
+            </HeaderSection2>
+            <HeaderSection3>
+                <NavWrapper>
+                    <NavLink to="">
+                      <OpenSearch>
+                             <Icon>
+                            <AiOutlineSearch onClick={() => setShowInput(!showInput)} />
+                        </Icon>
+                        {showInput && (
+                            <Input type="text" placeholder="Search for..."></Input>
+                        )}
+                      </OpenSearch>
+                     
+                    </NavLink>
+                    <NavLink to="/">
+                        <Button
+                            id="fade-button"
+                            aria-controls={open ? 'fade-menu' : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={open ? 'true' : undefined}
+                            onClick={handleClick}
+                            color={'primary'}
+                        >
+                            <Icon>
+                                <FaBars color="#112D4E" />
+                            </Icon>
+                        </Button>
+                        <Menu
+                            id="fade-menu"
+                            MenuListProps={{
+                                'aria-labelledby': 'fade-button',
+                            }}
+                            anchorEl={anchorEl}
+                            open={open}
+                            onClose={handleClose}
+                        >
+                            <MenuItem onClick={handleClose}>User</MenuItem>
+                            <MenuItem onClick={handleClose}>Wishlist</MenuItem>
+                            <MenuItem onClick={handleClose}>My Cart</MenuItem>
+                        </Menu>
+                    </NavLink>
+                </NavWrapper>
+                <NavWrapperTablet>
+                    <NavLink to=''>
+                        <Icon><AiOutlineUser /></Icon>
+                    </NavLink>
+                    <NavLink to=''>
+                        <Icon><AiOutlineHeart /></Icon>
+                    </NavLink>
+                    <NavLink to=''>
+                        <Icon><AiOutlineShoppingCart /></Icon>
+                    </NavLink>
+                </NavWrapperTablet>
+            </HeaderSection3>
+        </Header>
 
-
-
-        </NavBar>
     )
 }
 
