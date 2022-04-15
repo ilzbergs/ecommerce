@@ -14,17 +14,16 @@ display: flex;
 const HomePage: React.FC = () => {
     return (
         <>
-            <ContentContainer>
-              
+            <ContentContainer>            
                 <Wrapper>
                     <SideBar />
                     <div>
-                        <Slider />
+                        <Slider/>
                         <Card />
                     </div>
                 </Wrapper>
             </ContentContainer>
-            <Footer />
+           <Footer /> 
         </>
     )
 }

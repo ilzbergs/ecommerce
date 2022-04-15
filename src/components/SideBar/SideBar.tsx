@@ -28,7 +28,6 @@ margin: 0 15px;
 padding: 0 10px;
 align-items: center;
 justify-content: center;
-
 `
 const CatName = styled.li`
 list-style: none;
