@@ -12,6 +12,7 @@ const Header = styled.div`
     padding: 0;
     width: 100%;
     max-width: 64rem;
+    position: absolute;
     background-color: aliceblue;
     align-items: center;
     justify-content: center;

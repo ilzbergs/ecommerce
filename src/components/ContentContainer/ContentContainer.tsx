@@ -4,7 +4,7 @@ import styled from "styled-components"
 const Container = styled.div`
     width: 100%;
     max-width: 64rem;
-    padding-top: 5rem;
+    padding-top: 6rem;
     display: flex;
     flex-flow: row wrap;
     justify-content:center;

@@ -5,12 +5,18 @@ width:200px;
 height:100px;
 background-color: aqua;
 font-weight: 700;
+border-radius: 6px;
 text-align: center;
 align-items: center;
 display: flex;
 justify-content: center;
 margin: 20px;
 cursor: pointer;
+ transition: all 250ms ease-in-out;
+  &:hover {
+    box-shadow: 0 4px 1rem -4px #000;
+    transform: translateY(-3px);
+  }
 @media screen and (min-width: 426px) {
   width: 255px;
   height: 125px;
