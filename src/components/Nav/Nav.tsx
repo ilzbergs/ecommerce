@@ -1,26 +1,41 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { useState } from "react"
-import React, { useRef } from 'react';
-import { faUser } from "@fortawesome/free-solid-svg-icons"
-import { faHeart } from "@fortawesome/free-solid-svg-icons"
-import { faShoppingCart } from "@fortawesome/free-solid-svg-icons"
+import React from 'react';
+import { Button, Menu, MenuItem } from "@mui/material"
+import { AiOutlineUser, AiOutlineHeart, AiOutlineShoppingCart, AiOutlineSearch, } from "react-icons/ai";
+import { FaBars } from "react-icons/fa";
 
-const NavBar = styled.header`
-    position: absolute;
+
+const Header = styled.div`
+    display: flex;
+    padding: 0;
     width: 100%;
     max-width: 64rem;
-    height: 4rem;
-    top:0;
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: space-between;
+    margin: 0 auto;
     background-color: aliceblue;
+    align-items: center;
+    justify-content: center;
+      @media screen and (min-width: 430px) {
+    padding: 1.5rem;
+}
 `
+const HeaderSection1 = styled.div`
+    width: calc(100%/3);
+    display: flex;
+    justify-content: flex-start;
+`
+const HeaderSection2 = styled.div`
+    width: calc(100%/3);
+    display: flex;
+    justify-content: flex-end;
+`
+const HeaderSection3 = styled.div`
+    width: calc(100%/3);
+    display: flex;
+    justify-content: flex-end;
+`
+
 const Logo = styled.a`
     width: 5rem;
     height: 2rem;
@@ -31,111 +46,152 @@ const Logo = styled.a`
     background-repeat: no-repeat; 
 `
 const NavLink = styled(Link)`
-width: 100%;
-    min-width: 4rem;
+    width: 100%;
+    padding:5px;
     text-decoration: none;
-    cursor: pointer;
-    padding: 20px;
-   
     &:visited {
         color: #112D4E;
     }
+     @media screen and (min-width: 768px) {
+  padding: 15px;
+    }
 `
 const NavWrapper = styled.div`
-    margin-right: 1rem;
-    @media screen and (min-width: 480px) {
+display: flex;
+align-items: center;
+    @media screen and (min-width: 430px) {
     display: none;
 }
 `
 const NavWrapperTablet = styled.div`
-    margin-right: 1rem;
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 429px) {
     display: none;
 }
 `
-
-const Input = styled.input`
-    position: absolute;
-    z-index: 1;
-    top: 1.3rem;
-    right: 7rem;
-    border: 1px solid;
-    border-radius: 5px;
-    width: 150px;
-     @media screen and (min-width: 480px) {
-    right:14rem
-}
+const Search = styled.div`
+    color: #112D4E;
+  width: 235px;
+  min-width: 155px;
+  max-width: 235px;
+   height: 35px;
+   border-radius: 30px;
+   display: flex;
+   background-color: white;
+   align-items: center;
+   padding: 10px;
+    @media screen and (max-width: 429px) {
+        display: none;
+    }
+       @media screen and (max-width: 768px) {
+  width:155px;
+  height: 25px;
+    }
 `
-const DropDown = styled.div`
-    position: absolute;
-    top: 3rem;
-    min-width: 6rem;
-    height: auto;
-    background: #eeeeed;
-    z-index: 1;
-    line-height: 2rem;
-    text-align: left;
-    border: 1px solid;
-    border-radius: 5px;
-    padding: 5px;
+const Input = styled.input`
+     height: 25px;
+     width: 120px;
+     border: none;
+     outline: none;
+     border-radius: 35px;
+       @media screen and (min-width: 769px) {
+        width: 200px;
+        height: 35px;
+    }
+`
+const SearchIcon = styled.i`
+    font-size: 24px;
+   position: absolute;
+   top: 30px;
+`
+const Icon = styled.i`
+    font-size: 24px;
+     @media screen and (min-width: 768px) {
+   font-size: 30px;
+    }
+`
+const OpenSearch = styled.div`
+  display: flex;
+ flex-direction: row-reverse;
 `
 
 const Nav: React.FC = () => {
-    const [isOpen, setIsOpen] = useState(false)
     const [showInput, setShowInput] = useState(false)
-    const ref = useRef<HTMLDivElement>(null)
-
-    // useEffect(() => {
-    //     const handleClickOutside = (event: { target: any }) => {
-    //         if (!ref.current.contains(event.target)) {
-    //             setIsOpen(false);
-    //         }
-    //     };
-    //     document.addEventListener("mousedown", handleClickOutside);
-    // }, [ref]);
-
+    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+    const open = Boolean(anchorEl);
+    const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     return (
-        <NavBar>
-            <Logo href="/" />
-            <NavWrapper>
-                <NavLink to="">
-                    <FontAwesomeIcon icon={faSearch} onClick={() => setShowInput(!showInput)}></FontAwesomeIcon>
-                    {showInput && (
-                        <Input type="text" placeholder="Search for..."></Input>
-                    )}
-                </NavLink>
-                <NavLink to="">
-                    <FontAwesomeIcon icon={faBars} onClick={() => setIsOpen(!isOpen)} ></FontAwesomeIcon>
-                    {isOpen && (
-                        <DropDown ref={ref}>
-                            <div>User</div>
-                            <div>Wishlist</div>
-                            <div>Shopping Cart</div>
-                        </DropDown>
-                    )
-                    }
-                </NavLink>
-            </NavWrapper>
-            <NavWrapperTablet>
-                <NavLink to=''>
-                    <Input type="text" placeholder="Search for..." name="searchInput" id="searchInput" autoComplete="off" />
-                        <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>                  
-                </NavLink>
-                <NavLink to=''>
-                    <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
-                </NavLink>
-                <NavLink to=''>
-                    <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
-                </NavLink>
-                <NavLink to=''>
-                    <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
-                </NavLink>
-            </NavWrapperTablet>
+        <Header>
+            <HeaderSection1>
+                <Logo href="/" />
+            </HeaderSection1>
+            <HeaderSection2>
+                <Search>
+                    <label htmlFor="search">
+                        <Input type="text" id="search" name="search" placeholder="Search for..." />
+                        <SearchIcon>< AiOutlineSearch /></SearchIcon>
+                    </label>
+                </Search>
+            </HeaderSection2>
+            <HeaderSection3>
+                <NavWrapper>
+
+                    <OpenSearch>
+                        <Icon>
+                            <AiOutlineSearch onClick={() => setShowInput(!showInput)} />
+                        </Icon>
+                        {showInput && (
+                            <Input type="text" placeholder="Search for..."></Input>
+                        )}
+                    </OpenSearch>
 
 
+                    <Button
+                        id="fade-button"
+                        aria-controls={open ? 'fade-menu' : undefined}
+                        aria-haspopup="true"
+                        aria-expanded={open ? 'true' : undefined}
+                        onClick={handleClick}
+                        color={'primary'}
+                    >
+                        <Icon>
+                            <FaBars color="#112D4E" />
+                        </Icon>
+                    </Button>
+                    <Menu
+                        id="fade-menu"
+                        MenuListProps={{
+                            'aria-labelledby': 'fade-button',
+                        }}
+                        anchorEl={anchorEl}
+                        open={open}
+                        onClose={handleClose}
+                    >
+                        <MenuItem onClick={handleClose}><NavLink to='/user'>User</NavLink></MenuItem>
+                        <MenuItem onClick={handleClose}><NavLink to='/wish-list'>Wishlist</NavLink></MenuItem>
+                        <MenuItem onClick={handleClose}><NavLink to='/cart'>Cart</NavLink></MenuItem>
+                    </Menu>
 
-        </NavBar>
+                </NavWrapper>
+                <NavWrapperTablet>
+                    <NavLink to='/user'>
+                        <Icon><AiOutlineUser /></Icon>
+                    </NavLink>
+                    <NavLink to='/wish-list'>
+                        <Icon><AiOutlineHeart /></Icon>
+                    </NavLink>
+                    <NavLink to='/cart'>
+                        <Icon><AiOutlineShoppingCart /></Icon>
+                    </NavLink>
+                </NavWrapperTablet>
+            </HeaderSection3>
+        </Header>
+
     )
 }
 

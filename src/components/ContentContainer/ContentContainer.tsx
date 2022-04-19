@@ -4,9 +4,9 @@ import styled from "styled-components"
 const Container = styled.div`
     width: 100%;
     max-width: 64rem;
-    padding-top: 5rem;
+     margin: 0 auto;
     display: flex;
-    flex-flow: row wrap;
+     flex-direction: row; 
     justify-content:center;
     align-items: center;
     margin-bottom: 2rem;

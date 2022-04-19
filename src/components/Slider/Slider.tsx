@@ -1,12 +1,16 @@
+
 import SimpleImageSlider from "react-simple-image-slider";
 import styled from "styled-components";
 
 
 const StyledSlider = styled.div`
-    margin-bottom: 55px;
+    margin-bottom: 4rem;
     justify-content: center;
     display: flex;
-    padding-top: 34px;
+    padding-top:4rem;
+`
+const StyledImages = styled(SimpleImageSlider)`
+
 `
 
 const images = [
@@ -17,18 +21,23 @@ const images = [
     { url: "https://images.ctfassets.net/9l3tjzgyn9gr/photo-165355/a4fcf6dc9e5cae625db0d9da9d6066a8/165355-single-male-elephant-in-the-masai-mara.jpg?w=1800&q=50&fm=jpg&fl=progressive" },
 ];
 
+
 const Slider: React.FC = () => {
     return (
         <>
         <StyledSlider>
-            <SimpleImageSlider
-                width={300}
-                height={200}
+            <StyledImages
+                width={350}
+                height={250}
                 images={images}
                 showBullets={true}
                 showNavs={true}
-                navStyle={1} />
+                navStyle={1}
+                autoPlayDelay={2}
+                slideDuration={2} 
+                autoPlay={true}/>
         </StyledSlider></>
+       
     );
 }
 

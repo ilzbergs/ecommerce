@@ -1,13 +1,18 @@
 import styled from "styled-components"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFacebook } from "@fortawesome/free-brands-svg-icons"
-import { faTwitter } from "@fortawesome/free-brands-svg-icons"
-import { faInstagram } from "@fortawesome/free-brands-svg-icons"
+import { BsFacebook } from "react-icons/bs";
+import { BsTwitter } from "react-icons/bs";
+import { BsInstagram } from "react-icons/bs";
+import { url } from "inspector";
+
+const FooterRow = styled.footer`
+
+`
 
 const FooterText = styled.footer`
   text-align: center;
   padding-bottom: 1rem;
-  font-size: 12px;
+  font-size: 16px;
+  
 `
 const SocialBar = styled.div`
   align-items: center;
@@ -16,28 +21,35 @@ const SocialBar = styled.div`
   display: flex;
   justify-content: center;
   font-size: 18px;
+  
 `
 const SocIcons = styled.a`
   cursor: pointer;
   padding: 20px;
+  font-size: 24px;
   display: block;
+    &:visited {
+        color: black;
+    }
 `
 const Footer: React.FC = () => {
   return (
     <>
-      <SocialBar>
-        <SocIcons>
-          <FontAwesomeIcon icon={faFacebook} onClick={() => { console.log('clicked Facebook') }} ></FontAwesomeIcon>
-        </SocIcons>
-        <SocIcons>
-          <FontAwesomeIcon icon={faTwitter} onClick={() => { console.log('clicked Twitter') }}></FontAwesomeIcon>
-        </SocIcons>
-        <SocIcons>
-          <FontAwesomeIcon icon={faInstagram} onClick={() => { alert("test")}}></FontAwesomeIcon>
-        </SocIcons>
+      <FooterRow>
+        <SocialBar>
+          <SocIcons href="https://www.facebook.com/" target='_blank'><BsFacebook />
+          </SocIcons>
+          <SocIcons href="https://www.twitter.com/" target='_blank'><BsTwitter />
 
-      </SocialBar>
-      <FooterText>@ 2022 my copyrights</FooterText>
+          </SocIcons>
+          <SocIcons href="https://www.instagram.com/" target='_blank'><BsInstagram />
+
+          </SocIcons>
+
+        </SocialBar>
+        <FooterText>@ 2022 my copyrights</FooterText>
+      </FooterRow>
+
     </>
   )
 }
