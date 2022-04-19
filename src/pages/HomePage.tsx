@@ -19,7 +19,7 @@ const HomePage: React.FC = () => {
                     <SideBar />
                     <div>
                         <Slider/>
-                        <Card />
+                        <Card/>
                     </div>
                 </Wrapper>
             </ContentContainer>

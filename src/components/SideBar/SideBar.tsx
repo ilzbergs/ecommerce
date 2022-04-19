@@ -3,13 +3,15 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
 
 const Wrapper = styled.aside`
-display: none;
 padding-left: 45px;
 display: flex;
 flex-direction: column;
   @media screen and (max-width: 768px) {
    position: absolute;
    z-index: 1;
+}
+ @media screen and (max-width: 429px) {
+left: -1.5rem;
 }
 `
 const BurgerMenu = styled.i`
@@ -52,18 +54,18 @@ word-wrap: break-word;
 const CategWrapper = styled.div`
 position: absolute;
 top: 8.5rem;
-transition: all 250ms ease-in-out;
  @media screen and (max-width: 768px) {
   top: 2.5rem;
 }
 `
 const SideBar: React.FC = () => {
     const [openSideBar, setOpenSideBar] = useState(true)
+  
     return (
         <Wrapper>
             <ListName onClick={() => setOpenSideBar(!openSideBar)}>
-                {openSideBar && (<CategWrapper>
-                    <CatName>Category 1</CatName>
+                {openSideBar && (<CategWrapper onClick={() => console.log('Test')}>
+                    <CatName >Category 1</CatName>
                     <CatName>Category 2</CatName>
                     <CatName>Category 3</CatName>
                     <CatName>Category 4</CatName>
