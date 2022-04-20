@@ -16,7 +16,7 @@ const HomePage: React.FC = () => {
         <>
             <ContentContainer>            
                 <Wrapper>
-                    <SideBar />
+                    <SideBar/>
                     <div>
                         <Slider/>
                         <Card/>

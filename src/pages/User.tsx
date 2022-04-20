@@ -5,7 +5,7 @@ const User: React.FC = () => {
     return (
 
         <><ContentContainer>
-<div>My profile</div>
+<div>My profile </div>
         </ContentContainer>
             <Footer /></>
     )
