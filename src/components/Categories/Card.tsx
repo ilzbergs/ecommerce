@@ -1,7 +1,7 @@
 import { Link, NavLink } from "react-router-dom"
 import styled from "styled-components"
 
-const StyledCard = styled.div`
+const StyledCard = styled(Link)`
 width:200px;
 height:100px;
 background-color: aqua;
@@ -15,7 +15,7 @@ margin: 20px;
 cursor: pointer;
   text-decoration: none;
     &:visited {
-        color: red;
+        color: #112D4E;
     }
  transition: all 250ms ease-in-out;
   &:hover {
@@ -45,31 +45,31 @@ const Card: React.FC = () => {
     return (
         <>
             <Wrap>
-                <StyledCard onClick={() => console.log('Click on category')}>
+                <StyledCard onClick={(): void => { }} to={`/items`}>
                     <img src='' alt="" />
                     <div>Category 1</div>
-
                 </StyledCard>
-                <StyledCard onClick={() => console.log('Click on category')}>
+                <StyledCard onClick={(): void => { }} to={`/items`}>
                     <img src='' alt="" />
                     <div>Category 2</div>
                 </StyledCard>
-                <StyledCard onClick={() => console.log('Click on category')}>
+                <StyledCard onClick={(): void => { }} to={`/items`}>
                     <img src='' alt="" />
                     <div>Category 3</div>
                 </StyledCard>
-                <StyledCard onClick={() => console.log('Click on category')}>
+                <StyledCard onClick={(): void => { }} to={`/items`}>
                     <img src='' alt="" />
                     <div>Category 4</div>
                 </StyledCard>
-                <StyledCard onClick={() => console.log('Click on category')}>
+                <StyledCard onClick={(): void => { }} to={`/items`}>
                     <img src='' alt="" />
                     <div>Category 5</div>
                 </StyledCard>
-                <StyledCard onClick={() => console.log('Click on category')}>
+                <StyledCard onClick={(): void => { }} to={`/items`}>
                     <img src='' alt="" />
                     <div>Category 6</div>
                 </StyledCard>
+
             </Wrap>
 
         </>

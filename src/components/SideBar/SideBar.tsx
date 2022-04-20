@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Wrapper = styled.aside`
 padding-left: 45px;
@@ -31,7 +32,7 @@ padding: 0 10px;
 align-items: center;
 justify-content: center;
 `
-const CatName = styled.li`
+const CatName = styled(Link)`
 list-style: none;
 font-size: 16px;
 display: flex;
@@ -41,6 +42,10 @@ cursor: pointer;
 width:200px;
 margin: 0 15px;
 height: 2rem;
+text-decoration: none;
+    &:visited {
+        color: #112D4E;
+    }
 background-color: #fff;
 border-bottom: 1px solid #e1e1e1;
 text-align: center;
@@ -65,18 +70,15 @@ const SideBar: React.FC = () => {
         <Wrapper>
             <ListName onClick={() => setOpenSideBar(!openSideBar)}>
                 {openSideBar && (<CategWrapper onClick={() => console.log('Test')}>
-                    <CatName >Category 1</CatName>
-                    <CatName>Category 2</CatName>
-                    <CatName>Category 3</CatName>
-                    <CatName>Category 4</CatName>
-                    <CatName>Category 5</CatName>
-                    <CatName>Category 6</CatName>
-                    <CatName>Category 1</CatName>
-                    <CatName>Category 2</CatName>
-                    <CatName>Category 3</CatName>
-                    <CatName>Category 4</CatName>
-                    <CatName>Category 5</CatName>
-                    <CatName>Category 6</CatName>
+                    <CatName onClick={(): void => { }} to={`/items`} >Category 1</CatName>
+                    <CatName onClick={(): void => { }} to={`/items`} >Category 2</CatName>
+                    <CatName onClick={(): void => { }} to={`/items`} >Category 3</CatName>
+                    <CatName onClick={(): void => { }} to={`/items`} >Category 4</CatName>
+                    <CatName onClick={(): void => { }} to={`/items`} >Category 5</CatName>
+                    <CatName onClick={(): void => { }} to={`/items`} >Category 6</CatName>
+                    <CatName onClick={(): void => { }} to={`/items`} >Category 7</CatName>
+                   
+
                 </CategWrapper>)}
                 <BurgerMenu>
                     <GiHamburgerMenu />

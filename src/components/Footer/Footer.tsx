@@ -2,10 +2,22 @@ import styled from "styled-components"
 import { BsFacebook } from "react-icons/bs";
 import { BsTwitter } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
-import { url } from "inspector";
+
+const FooterContainer = styled.div`
+ width: 100%;
+    max-width: 64rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row; 
+    justify-content:center;
+    align-items: center;   
+`
 
 const FooterRow = styled.footer`
-
+margin-top: 2rem;
+bottom: 0;
+width: 100%;
+max-width: 64rem;
 `
 
 const FooterText = styled.footer`
@@ -35,20 +47,22 @@ const SocIcons = styled.a`
 const Footer: React.FC = () => {
   return (
     <>
-      <FooterRow>
-        <SocialBar>
-          <SocIcons href="https://www.facebook.com/" target='_blank'><BsFacebook />
-          </SocIcons>
-          <SocIcons href="https://www.twitter.com/" target='_blank'><BsTwitter />
+      <FooterContainer>
+        <FooterRow>
+          <SocialBar>
+            <SocIcons href="https://www.facebook.com/" target='_blank'><BsFacebook />
+            </SocIcons>
+            <SocIcons href="https://www.twitter.com/" target='_blank'><BsTwitter />
 
-          </SocIcons>
-          <SocIcons href="https://www.instagram.com/" target='_blank'><BsInstagram />
+            </SocIcons>
+            <SocIcons href="https://www.instagram.com/" target='_blank'><BsInstagram />
 
-          </SocIcons>
+            </SocIcons>
 
-        </SocialBar>
-        <FooterText>@ 2022 my copyrights</FooterText>
-      </FooterRow>
+          </SocialBar>
+          <FooterText>@ 2022 my copyrights</FooterText>
+        </FooterRow>
+      </FooterContainer>
 
     </>
   )
