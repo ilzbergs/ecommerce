@@ -9,21 +9,19 @@ const Wrapper = styled.div`
 display: flex;
 `
 
-
-
 const HomePage: React.FC = () => {
     return (
         <>
-            <ContentContainer>            
+            <ContentContainer>
                 <Wrapper>
-                    <SideBar/>
+                    <SideBar />
                     <div>
-                        <Slider/>
-                        <Card/>
+                        <Slider />
+                        <Card />
                     </div>
                 </Wrapper>
             </ContentContainer>
-           <Footer /> 
+            <Footer />
         </>
     )
 }

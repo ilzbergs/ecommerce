@@ -4,11 +4,10 @@ import ContentContainer from "../components/ContentContainer/ContentContainer"
 import Footer from "../components/Footer/Footer"
 import SideBar from "../components/SideBar/SideBar"
 
-
 const Wrapper = styled.aside`
 display: flex;
 `
-const CardWrapper =styled.div`
+const CardWrapper = styled.div`
 display: flex;
 flex-flow: row wrap;
 width: 100%;
@@ -16,7 +15,7 @@ max-width:64rem;
 margin-bottom:50px;
 justify-content:center;
 padding-top: 3rem;
-`  
+`
 const StyledCard = styled(Link)`
 width:200px;
 height:100px;
@@ -47,7 +46,7 @@ cursor: pointer;
  width: 205px;
   height: 170px;
 }
-` 
+`
 const Image = styled.img`
 background-color:red;
 width: 100%;
@@ -73,58 +72,58 @@ margin-top: 0;
 `
 
 
-const Items: React.FC = () => {
-    return(
+const Products: React.FC = () => {
+    return (
         <><ContentContainer>
             <Wrapper>
                 <SideBar />
                 <CardWrapper>
-                     <Header>Category Name</Header>
-                    <StyledCard onClick={(): void => { } } to={`/items`}>
+                    <Header>Category Name</Header>
+                    <StyledCard onClick={(): void => { }} to={`/product-name`}>
                         <Image src='' alt="" />
                         <Name>Item name</Name>
                     </StyledCard>
-                    <StyledCard onClick={(): void => { } } to={`/items`}>
+                    <StyledCard onClick={(): void => { }} to={'/product-name'}>
                         <Image src='' alt="" />
                         <Name>Item name</Name>
                     </StyledCard>
-                    <StyledCard onClick={(): void => { } } to={`/items`}>
+                    <StyledCard onClick={(): void => { }} to={'/product-name'}>
                         <Image src='' alt="" />
                         <Name>Item name</Name>
                     </StyledCard>
-                    <StyledCard onClick={(): void => { } } to={`/items`}>
+                    <StyledCard onClick={(): void => { }} to={'/product-name'}>
                         <Image src='' alt="" />
                         <Name>Item name</Name>
                     </StyledCard>
-                    <StyledCard onClick={(): void => { } } to={`/items`}>
+                    <StyledCard onClick={(): void => { }} to={'/product-name'}>
                         <Image src='' alt="" />
                         <Name>Item name</Name>
                     </StyledCard>
-                    <StyledCard onClick={(): void => { } } to={`/items`}>
+                    <StyledCard onClick={(): void => { }} to={'/category-name'}>
                         <Image src='' alt="" />
                         <Name>Item name</Name>
                     </StyledCard>
-                    <StyledCard onClick={(): void => { } } to={`/items`}>
+                    <StyledCard onClick={(): void => { }} to={'/category-name'}>
                         <Image src='' alt="" />
                         <Name>Item name</Name>
                     </StyledCard>
-                    <StyledCard onClick={(): void => { } } to={`/items`}>
+                    <StyledCard onClick={(): void => { }} to={'/category-name'}>
                         <Image src='' alt="" />
                         <Name>Item name</Name>
                     </StyledCard>
-                    <StyledCard onClick={(): void => { } } to={`/items`}>
+                    <StyledCard onClick={(): void => { }} to={'/category-name'}>
                         <Image src='' alt="" />
                         <Name>Item name</Name>
                     </StyledCard>
-                    <StyledCard onClick={(): void => { } } to={`/items`}>
+                    <StyledCard onClick={(): void => { }} to={'/category-name'}>
                         <Image src='' alt="" />
                         <Name>Item name</Name>
                     </StyledCard>
-                    <StyledCard onClick={(): void => { } } to={`/items`}>
+                    <StyledCard onClick={(): void => { }} to={'/category-name'}>
                         <Image src='' alt="" />
                         <Name>Item name</Name>
                     </StyledCard>
-                    <StyledCard onClick={(): void => { } } to={`/items`}>
+                    <StyledCard onClick={(): void => { }} to={'/category-name'}>
                         <Image src='' alt="" />
                         <Name>Item name</Name>
                     </StyledCard>
@@ -132,9 +131,9 @@ const Items: React.FC = () => {
                 </CardWrapper>
             </Wrapper>
         </ContentContainer>
-        <Footer />
+            <Footer />
         </>
     )
 }
 
-export default Items
+export default Products

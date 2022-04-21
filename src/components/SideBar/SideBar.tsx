@@ -70,13 +70,13 @@ const SideBar: React.FC = () => {
         <Wrapper>
             <ListName onClick={() => setOpenSideBar(!openSideBar)}>
                 {openSideBar && (<CategWrapper onClick={() => console.log('Test')}>
-                    <CatName onClick={(): void => { }} to={`/items`} >Category 1</CatName>
-                    <CatName onClick={(): void => { }} to={`/items`} >Category 2</CatName>
-                    <CatName onClick={(): void => { }} to={`/items`} >Category 3</CatName>
-                    <CatName onClick={(): void => { }} to={`/items`} >Category 4</CatName>
-                    <CatName onClick={(): void => { }} to={`/items`} >Category 5</CatName>
-                    <CatName onClick={(): void => { }} to={`/items`} >Category 6</CatName>
-                    <CatName onClick={(): void => { }} to={`/items`} >Category 7</CatName>
+                    <CatName onClick={(): void => { }} to={`/category-name`} >Category 1</CatName>
+                    <CatName onClick={(): void => { }} to={`/category-name`} >Category 2</CatName>
+                    <CatName onClick={(): void => { }} to={`/category-name`} >Category 3</CatName>
+                    <CatName onClick={(): void => { }} to={`/category-name`} >Category 4</CatName>
+                    <CatName onClick={(): void => { }} to={`/category-name`} >Category 5</CatName>
+                    <CatName onClick={(): void => { }} to={`/category-name`} >Category 6</CatName>
+                    <CatName onClick={(): void => { }} to={`/category-name`} >Category 7</CatName>
                    
 
                 </CategWrapper>)}
