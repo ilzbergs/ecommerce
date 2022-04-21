@@ -4,7 +4,8 @@ import { createGlobalStyle } from 'styled-components';
 import Nav from './components/Nav/Nav';
 import Cart from './pages/Cart';
 import HomePage from './pages/HomePage'
-import Items from './pages/Items';
+import Products from './pages/Products';
+import Items from './pages/Products';
 import User from './pages/User';
 import WishList from './pages/WishList';
 const GlobalStyle = createGlobalStyle`
@@ -31,7 +32,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/user" element={<User />} />
           <Route path="/wish-list" element={<WishList />} />
-          <Route path='/items' element = {<Items/>}/>
+          <Route path='/category-name' element = {<Products/>}/>
 
         </Routes>
       </BrowserRouter></>

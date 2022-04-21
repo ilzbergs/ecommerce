@@ -45,27 +45,27 @@ const Card: React.FC = () => {
     return (
         <>
             <Wrap>
-                <StyledCard onClick={(): void => { }} to={`/items`}>
+                <StyledCard onClick={(): void => { }} to={`/category-name`}>
                     <img src='' alt="" />
                     <div>Category 1</div>
                 </StyledCard>
-                <StyledCard onClick={(): void => { }} to={`/items`}>
+                <StyledCard onClick={(): void => { }} to={`/category-name`}>
                     <img src='' alt="" />
                     <div>Category 2</div>
                 </StyledCard>
-                <StyledCard onClick={(): void => { }} to={`/items`}>
+                <StyledCard onClick={(): void => { }} to={`/category-name`}>
                     <img src='' alt="" />
                     <div>Category 3</div>
                 </StyledCard>
-                <StyledCard onClick={(): void => { }} to={`/items`}>
+                <StyledCard onClick={(): void => { }} to={`/category-name`}>
                     <img src='' alt="" />
                     <div>Category 4</div>
                 </StyledCard>
-                <StyledCard onClick={(): void => { }} to={`/items`}>
+                <StyledCard onClick={(): void => { }} to={`/category-name`}>
                     <img src='' alt="" />
                     <div>Category 5</div>
                 </StyledCard>
-                <StyledCard onClick={(): void => { }} to={`/items`}>
+                <StyledCard onClick={(): void => { }} to={`/category-name`}>
                     <img src='' alt="" />
                     <div>Category 6</div>
                 </StyledCard>

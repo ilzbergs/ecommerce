@@ -1,43 +1,107 @@
-
-import SimpleImageSlider from "react-simple-image-slider";
+import { useState } from "react";
 import styled from "styled-components";
+import slide1 from "../../assets/slide1.jpg";
+import slide2 from "../../assets/slide2.jpg";
+import slide3 from "../../assets/slide3.jpg";
+import slide4 from "../../assets/slide4.jpg";
+import slide5 from "../../assets/slide5.jpg";
+import arrowL from "../../assets/arrowL.svg";
+import arrowR from "../../assets/arrowR.svg";
 
+
+const sliderData = [
+    {
+        id: 1,
+        img: slide1,
+        title: "slide 1 title",
+        url: "/path1",
+    },
+    {
+        id: 2,
+        img: slide2,
+        title: "slide 2 title",
+        url: "/path2",
+    },
+    {
+        id: 3,
+        img: slide3,
+        title: "slide 3 title",
+        url: "/path3",
+    },
+    {
+        id: 4,
+        img: slide4,
+        title: "slide 4 title",
+        url: "/path4",
+    },
+    {
+        id: 5,
+        img: slide5,
+        title: "slide 1 title",
+        url: "/path1",
+    },
+];
 
 const StyledSlider = styled.div`
     margin-bottom: 4rem;
-    justify-content: center;
-    display: flex;
-    padding-top:4rem;
+    width: 100%;
+    max-width: 64rem;
+    padding-top:2rem;
+   
 `
-const StyledImages = styled(SimpleImageSlider)`
+const NavButton = styled.button<{ left?: boolean }>`
+  position: absolute;
+  top: 20%;
+  width: 2rem;
+  height: 2rem;
+  padding: 1rem;
+  background: url(${arrowR}) center/30% no-repeat;
+  border-radius: 50%;
+  right: 1rem;
+  ${(props) =>
+        props &&
+        props.left &&
+        `
+    background-image: url(${arrowL});
+    left: 1rem;
+    right: unset; 
+  `}
+`;
 
-`
-
-const images = [
-    { url: "https://media.wired.com/photos/593261cab8eb31692072f129/master/pass/85120553.jpg" },
-    { url: "https://i.natgeofe.com/k/75ac774d-e6c7-44fa-b787-d0e20742f797/giant-panda-eating_16x9.jpg" },
-    { url: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Wildlife_at_Maasai_Mara_%28Lion%29.jpg/1200px-Wildlife_at_Maasai_Mara_%28Lion%29.jpg" },
-    { url: "https://images.theconversation.com/files/285143/original/file-20190722-11355-1peled7.jpg" },
-    { url: "https://images.ctfassets.net/9l3tjzgyn9gr/photo-165355/a4fcf6dc9e5cae625db0d9da9d6066a8/165355-single-male-elephant-in-the-masai-mara.jpg?w=1800&q=50&fm=jpg&fl=progressive" },
-];
-
-
+const Banner = styled.div<{ bg: string }>`
+  width: 100%;
+  height: 16rem;
+  text-align: center;
+  background: url(${(props) => props && props.bg}) center/90% no-repeat;
+`;
 const Slider: React.FC = () => {
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+    const prevHandler = () => {
+        setCurrentSlide(
+            currentSlide > 0 ? currentSlide - 1 : sliderData.length - 1
+        );
+    };
+
+    const nextHandler = () => {
+        setCurrentSlide(
+            currentSlide === sliderData.length - 1 ? 0 : currentSlide + 1
+        );
+    };
+
     return (
         <>
-        <StyledSlider>
-            <StyledImages
-                width={350}
-                height={250}
-                images={images}
-                showBullets={true}
-                showNavs={true}
-                navStyle={1}
-                autoPlayDelay={2}
-                slideDuration={2} 
-                autoPlay={true}/>
-        </StyledSlider></>
-       
+            <StyledSlider>
+                <Banner
+                    key={sliderData[currentSlide].id}
+                    bg={sliderData[currentSlide].img}
+                >
+                    <h3>{sliderData[currentSlide].title}</h3>
+                </Banner>
+                <NavButton left onClick={prevHandler} />
+                <NavButton onClick={nextHandler} />
+            </StyledSlider></>
+
     );
 }
 
