@@ -8,7 +8,6 @@ import slide5 from "../../assets/slide5.jpg";
 import arrowL from "../../assets/arrowL.svg";
 import arrowR from "../../assets/arrowR.svg";
 
-
 const sliderData = [
     {
         id: 1,
@@ -47,7 +46,6 @@ const StyledSlider = styled.div`
     width: 100%;
     max-width: 64rem;
     padding-top:2rem;
-   
 `
 const NavButton = styled.button<{ left?: boolean }>`
   position: absolute;
@@ -72,17 +70,16 @@ const Banner = styled.div<{ bg: string }>`
   width: 100%;
   height: 16rem;
   text-align: center;
+  cursor: pointer;
   background: url(${(props) => props && props.bg}) center/90% no-repeat;
 `;
 const Slider: React.FC = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
-
     const prevHandler = () => {
         setCurrentSlide(
             currentSlide > 0 ? currentSlide - 1 : sliderData.length - 1
         );
     };
-
     const nextHandler = () => {
         setCurrentSlide(
             currentSlide === sliderData.length - 1 ? 0 : currentSlide + 1
@@ -101,7 +98,6 @@ const Slider: React.FC = () => {
                 <NavButton left onClick={prevHandler} />
                 <NavButton onClick={nextHandler} />
             </StyledSlider></>
-
     );
 }
 
