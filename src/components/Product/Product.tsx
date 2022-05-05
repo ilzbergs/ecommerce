@@ -7,17 +7,25 @@ text-align:center;
 `
 const Wrapper = styled.div`
 padding: 1rem;
-height: 15rem;
+height: 8rem;
 display: flex;
+ @media screen and (min-width: 764px) {
+height: 10rem;
+}
 `
 const Image = styled.img`
-width: 12rem;
+width: 6rem;
+height: 6rem;
+@media screen and (min-width: 764px) {
+width: 10rem;
 height: 8rem;
+}
 `
 const InfoSideWrapper = styled.div`
+padding: 0 1rem;
+margin: 0 auto;
 display: flex;
 flex-direction: column;
-padding: 0 1rem;
 justify-content: space-between;
 `
 const Text = styled.p`
