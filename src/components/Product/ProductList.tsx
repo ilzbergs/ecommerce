@@ -4,8 +4,8 @@ import Product from "./Product"
 
 const Wrapper = styled.div`
 width: 100%;
- display: flex;
- flex-direction: column;
+display: flex;
+flex-direction: column;
  `
 const Price = styled.div`
 display: flex;
@@ -15,7 +15,6 @@ font-size: 24px;
 font-weight: 800;
 text-decoration: underline;
  `
-
 const Btn = styled.button`
 width: 100%;
 background-color: rgb(17, 45, 78);
@@ -30,7 +29,6 @@ margin: 50px auto;
 display: block;
 }
 `
-
 const ProductList: React.FC = () => {
     return (
         <>
@@ -42,7 +40,6 @@ const ProductList: React.FC = () => {
                 <div>
                     <Btn type="submit" onClick={(): void => { console.log('Clicked') }}>Checkout</Btn>
                 </div>
-
             </Wrapper>
 
 
