@@ -1,13 +1,9 @@
-import ContentContainer from "../components/ContentContainer/ContentContainer"
-import Footer from "../components/Footer/Footer"
 
-const User: React.FC = () => {
-    return (
+import LoginForm from "../components/Login/LoginForm"
+import SignUpForm from "../components/SignUp/SignUpForm"
 
-        <><ContentContainer>
-<div>My profile </div>
-        </ContentContainer>
-            <Footer /></>
-    )
+const User: React.FC<{login?:boolean}> = ({login}) => {
+   if (login) return <SignUpForm/>
+   return <LoginForm/>
 }
 export default User
