@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 padding: 1rem;
 height: 13rem;
 display: flex;
- @media screen and (min-width: 768px) {
+ @media screen and (min-width: 769px) {
 height: 10rem;
 }
 `
@@ -29,22 +29,31 @@ cursor: pointer;
 const Image = styled.img`
 width: 6rem;
 height: 6rem;
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 430px) {
+width: 8rem;
+height: rem;
+}
+@media screen and (min-width: 769px) {
 width: 10rem;
 height: 8rem;
 }
 `
 const InfoSideWrapper = styled.div`
 padding: 0 1rem;
+width: 100%;
 margin: 0 auto;
 display: flex;
 flex-direction: column;
 justify-content: space-between;
-
-@media screen and (min-width: 768px) {
+align-items: flex-end;
+@media screen and (min-width: 430px) {
+align-items: center;
+}
+@media screen and (min-width: 769px) {
 flex-direction: row;
 justify-content: space-between;
 width: 100%;
+align-items: baseline;
 }
 `
 const Text = styled.p`
@@ -67,7 +76,7 @@ const Product: React.FC = () => {
             <Wrapper>
                 <Image src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" alt="" />
                 <InfoSideWrapper>
-                    <Text>Product info</Text>
+                    <Text>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</Text>
                     <Price>100.00 €</Price>
                     <Input
                         type="number"
