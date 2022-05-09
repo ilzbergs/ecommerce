@@ -6,9 +6,9 @@ const Container = styled.div`
     max-width: 64rem;
      margin: 0 auto;
     display: flex;
-    
+    height: 100vh;
      flex-direction: column; 
-    justify-content:center;
+    /* justify-content:center; */
     align-items: center;
     margin-bottom: 2rem;
     background-color: #faf9f9;
