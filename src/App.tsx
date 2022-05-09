@@ -1,11 +1,12 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
+import LoginForm from './components/Login/LoginForm';
 import Nav from './components/Nav/Nav';
+import SignUpForm from './components/SignUp/SignUpForm';
 import Cart from './pages/Cart';
 import HomePage from './pages/HomePage'
 import Products from './pages/Products';
-import Items from './pages/Products';
 import User from './pages/User';
 import WishList from './pages/WishList';
 const GlobalStyle = createGlobalStyle`
@@ -33,7 +34,8 @@ function App() {
           <Route path="/user" element={<User />} />
           <Route path="/wish-list" element={<WishList />} />
           <Route path='/category-name' element = {<Products/>}/>
-
+          <Route path='/login' element={<LoginForm/>} />
+          <Route path='/sign-up' element={<SignUpForm/>} />
         </Routes>
       </BrowserRouter></>
   );
