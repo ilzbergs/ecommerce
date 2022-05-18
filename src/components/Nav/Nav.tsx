@@ -124,7 +124,7 @@ max-width: 64rem;
 align-items: center;
 margin: 0 auto;
 `
-const Logout = styled.button`
+const Login = styled.button`
 height: 1.5rem;
 `
 
@@ -143,26 +143,27 @@ const Nav: React.FC = () => {
 
     return (
         <>
-        <UserInfo>
-            <pre>{JSON.stringify(user, null, 2)}</pre>
-            {user ? (
-                <Logout
-                    onClick={() => {
-                        setUser(null);
-                    }}
-                >
-                    logout
-                </Logout>
-            ) : (
-                <div
-                    onClick={async () => {
-                        setUser(user);
-                    }}
-                >
-                </div>
-            )}
-        </UserInfo>
-            
+            {/* <UserInfo>
+                <pre>{JSON.stringify(user, null, 2)}</pre>
+                {user ? (
+                    <button
+                        onClick={() => {
+                            setUser('Sign in again');
+                        }}
+                    >
+                        <NavLink to='/user'>Sign Out</NavLink>
+
+                    </button>
+                ) : (
+                    <button
+                        onClick={async () => {
+                            setUser(user);
+                        }}
+                    ><NavLink to='/user'>Sign Up</NavLink>
+                    </button>
+                )}
+            </UserInfo> */}
+
             <Header>
                 <HeaderSection1>
                     <Logo href="/" />

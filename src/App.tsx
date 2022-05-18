@@ -29,9 +29,19 @@ const GlobalStyle = createGlobalStyle`
 function App() {
   const [user, setUser] = useState()
   const providerValue = useMemo(() => ({ user, setUser }), [user, setUser])
+
+
+
+
+
+
+
+
+
+
   return (
     <><GlobalStyle />
-      <UserContext.Provider value={providerValue}>
+      {/* <UserContext.Provider value={providerValue}> */}
         <BrowserRouter>
           <Nav />
           <Routes>
@@ -45,7 +55,7 @@ function App() {
             <Route path='/product/:id' element={<Product />} />
           </Routes>
         </BrowserRouter>
-      </UserContext.Provider>
+      {/* </UserContext.Provider> */}
     </>
 
 

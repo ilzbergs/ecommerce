@@ -25,17 +25,33 @@ justify-content:center;
 `
 const HomePage: React.FC = () => {
     const [data, setData] = useState([])
-   
+    
+    const [openSideBar, setOpenSideBar] = useState(false)
+    const isMobile = window.innerWidth < 768
+
+    const SideBarHandler = () => {
+        isMobile && setOpenSideBar(!openSideBar)
+    }
+
+    useEffect(() => {
+        !isMobile && setOpenSideBar(true)
+    }, [isMobile])
+
     useEffect(() => {
         fetch('https://fakestoreapi.com/products')
             .then(response => response.json())
             .then(data => setData(data))
     }, [])
+
+
+
     return (
         <>
             <ContentContainer>
                 <Wrapper>
-                   {/* <SideBar data={undefined}/> */}
+                    <div>
+                       {/* <SideBar data={data}/> */}
+                    </div>
                     <div>
                         <Slider />
                         <Wrap>

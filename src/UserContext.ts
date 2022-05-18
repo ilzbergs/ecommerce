@@ -2,7 +2,7 @@ import { createContext } from "react";
 
 type UserContextType = {
     user: string | null,
-    setUser: (name: string) => void
+    setUser: (user: string) => void
 }
 
 const UserContext = createContext<UserContextType>({

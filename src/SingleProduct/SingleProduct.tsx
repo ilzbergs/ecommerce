@@ -71,8 +71,8 @@ font-size: 30px;
 
 `
 
-const SingleProduct: React.FC = () => {
-    // const { id, image, description, price } = data;
+const SingleProduct: React.FC<{ data: Post }> = ({ data }) => {
+    const { id, image, description, price, title } = data;
     const [isActive, setIsActive] = useState(false);
     const handleClick = () => {
         setIsActive(current => !current);
@@ -82,22 +82,20 @@ const SingleProduct: React.FC = () => {
             <StyledCard>
                 <Wrapper>
                     <div>
-                        <Title>Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops</Title>
-                        <Image src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80" alt="" />
+                        <Title>{title}</Title>
+                        <Image src={image} alt="" />
                     </div>
                     <Info>
                         <Wishlist>
                             <AiOutlineHeart style={{
-
                                 color: isActive ? 'red' : '',
                             }} onClick={() => handleClick()} />
                         </Wishlist>
-
-                        <Price>Price:100$</Price>
+                        <Price>{price}</Price>
                         <Btn onClick={() => console.log('added to cart')}>Add to cart</Btn>
                     </Info>
                 </Wrapper>
-                <Desription>Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday</Desription>
+                <Desription>{description}</Desription>
             </StyledCard>
 
         </>

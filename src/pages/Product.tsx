@@ -25,17 +25,14 @@ const Product: React.FC = () => {
             .then(response => response.json())
             .then(data => setProduct(data))
     }, [id])
+    console.log(products);
+    
 
     return (
         <>
             <ContentContainer>
                 <Wrapper>
-                    {/* {products.map((post) => {
-                        return (
-                            <SingleProduct data={post} key={post} />
-                        )
-                    })} */}
-                    <SingleProduct/>
+                  <SingleProduct data={products}/>
                 </Wrapper>
             </ContentContainer>
             <Footer />

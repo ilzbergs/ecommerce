@@ -55,6 +55,7 @@ word-wrap: break-word;
        background-color: #e1e1e1;
        transition: all 250ms ease;
  }
+
 `
 const CategWrapper = styled.div`
 position: absolute;
@@ -62,11 +63,21 @@ top: 8.5rem;
  @media screen and (max-width: 768px) {
   top: 2.5rem;
 }
+@media screen and (min-width: 768px) {
+  margin-top: 1rem;
+}
 `
 const SideBar: React.FC<{ data: Post }> = ({ data }) => {
     const { category } = data;
+    const [categoryData, setCategoryData] = useState([])
     const [openSideBar, setOpenSideBar] = useState(false)
     const isMobile = window.innerWidth < 768
+
+    useEffect(() => {
+        fetch('https://fakestoreapi.com/products/categories')
+            .then(response => response.json())
+            .then(data => setCategoryData(data))
+    }, [])
 
     const SideBarHandler = () => {
         isMobile && setOpenSideBar(!openSideBar)
@@ -80,10 +91,15 @@ const SideBar: React.FC<{ data: Post }> = ({ data }) => {
         <Wrapper>
             <ListName onClick={SideBarHandler}>
                 {openSideBar && (<CategWrapper onClick={() => console.log('Test')}>
-                    <CatName onClick={(): void => { }} to={`/category/${category}`}>
-                        <div>{category}</div>
-                    </CatName>
-
+                    <div>
+                        {categoryData.map((post) => {
+                            return (
+                                <CatName onClick={(): void => { }} to={`/category/${category}`}>
+                                    {post}
+                                </CatName>
+                            )
+                        })}
+                    </div>
                 </CategWrapper>)}
                 <BurgerMenu>
                     <GiHamburgerMenu />
