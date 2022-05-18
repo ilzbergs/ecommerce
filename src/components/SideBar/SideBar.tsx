@@ -2,6 +2,7 @@ import styled from "styled-components"
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Post from "../../Interfaces";
 
 const Wrapper = styled.aside`
 padding-left: 45px;
@@ -62,7 +63,8 @@ top: 8.5rem;
   top: 2.5rem;
 }
 `
-const SideBar: React.FC = () => {
+const SideBar: React.FC<{ data: Post }> = ({ data }) => {
+    const { category } = data;
     const [openSideBar, setOpenSideBar] = useState(false)
     const isMobile = window.innerWidth < 768
 
@@ -70,22 +72,18 @@ const SideBar: React.FC = () => {
         isMobile && setOpenSideBar(!openSideBar)
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         !isMobile && setOpenSideBar(true)
-      
     }, [isMobile])
 
     return (
         <Wrapper>
             <ListName onClick={SideBarHandler}>
                 {openSideBar && (<CategWrapper onClick={() => console.log('Test')}>
-                    <CatName onClick={(): void => { }} to={`/category-name`} >Category 1</CatName>
-                    <CatName onClick={(): void => { }} to={`/category-name`} >Category 2</CatName>
-                    <CatName onClick={(): void => { }} to={`/category-name`} >Category 3</CatName>
-                    <CatName onClick={(): void => { }} to={`/category-name`} >Category 4</CatName>
-                    <CatName onClick={(): void => { }} to={`/category-name`} >Category 5</CatName>
-                    <CatName onClick={(): void => { }} to={`/category-name`} >Category 6</CatName>
-                    <CatName onClick={(): void => { }} to={`/category-name`} >Category 7</CatName>
+                    <CatName onClick={(): void => { }} to={`/category/${category}`}>
+                        <div>{category}</div>
+                    </CatName>
+
                 </CategWrapper>)}
                 <BurgerMenu>
                     <GiHamburgerMenu />
@@ -95,3 +93,5 @@ const SideBar: React.FC = () => {
 }
 
 export default SideBar
+
+

@@ -3,6 +3,7 @@ import styled from "styled-components"
 import ContentContainer from "../components/ContentContainer/ContentContainer"
 import Footer from "../components/Footer/Footer"
 import SideBar from "../components/SideBar/SideBar"
+import Post from "../Interfaces"
 
 const Wrapper = styled.aside`
 display: flex;
@@ -68,12 +69,11 @@ const Header = styled.div`
 margin-top: 0;
 }
 `
-const Products: React.FC = () => {
+const Products: React.FC=() => {
     return (
         <><ContentContainer>
-
             <Wrapper>
-                <SideBar />
+                {/* <SideBar data={post} /> */}
                 <CardWrapper>
                     <Header>Category Name</Header>
                     <StyledCard onClick={(): void => { }} to={`/product-name`}>

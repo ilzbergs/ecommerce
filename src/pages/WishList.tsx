@@ -5,7 +5,7 @@ import Footer from "../components/Footer/Footer"
 
 const Wrapper = styled.div`
 width: 100%;
-height: 100vh auto;
+height: 80vh ;
 padding: 2rem; 
 display: flex;
 flex-flow: wrap;

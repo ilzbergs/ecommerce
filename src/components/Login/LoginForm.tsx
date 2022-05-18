@@ -1,6 +1,8 @@
 import { Field, Form, Formik } from "formik";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import UserContext from "../../UserContext";
 import ContentContainer from "../ContentContainer/ContentContainer";
 import Footer from "../Footer/Footer";
 
@@ -10,7 +12,7 @@ justify-content: center;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-margin-top: 8rem;
+height: 80vh;
 `
 
 const StyledField = styled(Field)`
@@ -29,6 +31,13 @@ text-transform: uppercase;
 `
 
 const LoginForm: React.FC = () => {
+    const { setUser } = useContext(UserContext);
+
+    const submitHandler = (values: { email: string; password: string }) => {
+        console.log(values);
+        setUser(values.email);
+    };
+
     return (
         <>
             <ContentContainer>
@@ -38,11 +47,9 @@ const LoginForm: React.FC = () => {
                         password: "",
                     }}
                     onSubmit={(values, { resetForm }) => {
-                        console.log(values);
+                        submitHandler(values)
                         resetForm()
-
                     }}
-
                 >
                     <LoginWrapper>
                         <StyledField type="email" id="email" name="email" placeholder="Email" />
@@ -54,7 +61,6 @@ const LoginForm: React.FC = () => {
             </ContentContainer>
             <Footer />
         </>
-
     );
 };
 

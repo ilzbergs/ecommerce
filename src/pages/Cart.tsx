@@ -1,7 +1,7 @@
 import styled from "styled-components"
 import ContentContainer from "../components/ContentContainer/ContentContainer"
 import Footer from "../components/Footer/Footer"
-import ProductList from "../components/Product/ProductList"
+import ProductList from "../components/ProductCart/ProductList"
 
 const Header = styled.div`
 width: 100%;
