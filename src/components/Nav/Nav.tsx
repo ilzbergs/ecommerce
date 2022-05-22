@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
-import { useState } from "react"
+import { useContext, useState } from "react"
 import React from 'react';
 import { Button, Menu, MenuItem } from "@mui/material"
 import { AiOutlineUser, AiOutlineHeart, AiOutlineShoppingCart, AiOutlineSearch, } from "react-icons/ai";
 import { FaBars } from "react-icons/fa";
+import UserContext from "../../UserContext";
+import LoginForm from "../Login/LoginForm";
 
 
 const Header = styled.div`
@@ -101,7 +103,7 @@ const Input = styled.input`
 const SearchIcon = styled.i`
     font-size: 24px;
    position: absolute;
-   top: 30px;
+   /* top: 30px; */
 `
 const Icon = styled.i`
     font-size: 24px;
@@ -113,8 +115,22 @@ const OpenSearch = styled.div`
   display: flex;
  flex-direction: row-reverse;
 `
+const UserInfo = styled.div`
+display: flex;
+justify-content: right;
+background-color: aliceblue;
+width: 100%;
+max-width: 64rem;
+align-items: center;
+margin: 0 auto;
+`
+const Login = styled.button`
+height: 1.5rem;
+`
+
 
 const Nav: React.FC = () => {
+    const { user, setUser } = useContext(UserContext);
     const [showInput, setShowInput] = useState(false)
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
@@ -126,71 +142,94 @@ const Nav: React.FC = () => {
     };
 
     return (
-        <Header>
-            <HeaderSection1>
-                <Logo href="/" />
-            </HeaderSection1>
-            <HeaderSection2>
-                <Search>
-                    <label htmlFor="search">
-                        <Input type="text" id="search" name="search" placeholder="Search for..." />
-                        <SearchIcon>< AiOutlineSearch /></SearchIcon>
-                    </label>
-                </Search>
-            </HeaderSection2>
-            <HeaderSection3>
-                <NavWrapper>
-
-                    <OpenSearch>
-                        <Icon>
-                            <AiOutlineSearch onClick={() => setShowInput(!showInput)} />
-                        </Icon>
-                        {showInput && (
-                            <Input type="text" placeholder="Search for..."></Input>
-                        )}
-                    </OpenSearch>
-
-
-                    <Button
-                        id="fade-button"
-                        aria-controls={open ? 'fade-menu' : undefined}
-                        aria-haspopup="true"
-                        aria-expanded={open ? 'true' : undefined}
-                        onClick={handleClick}
-                        color={'primary'}
-                    >
-                        <Icon>
-                            <FaBars color="#112D4E" />
-                        </Icon>
-                    </Button>
-                    <Menu
-                        id="fade-menu"
-                        MenuListProps={{
-                            'aria-labelledby': 'fade-button',
+        <>
+            {/* <UserInfo>
+                <pre>{JSON.stringify(user, null, 2)}</pre>
+                {user ? (
+                    <button
+                        onClick={() => {
+                            setUser('Sign in again');
                         }}
-                        anchorEl={anchorEl}
-                        open={open}
-                        onClose={handleClose}
                     >
-                        <MenuItem onClick={handleClose}><NavLink to='/user'>User</NavLink></MenuItem>
-                        <MenuItem onClick={handleClose}><NavLink to='/wish-list'>Wishlist</NavLink></MenuItem>
-                        <MenuItem onClick={handleClose}><NavLink to='/cart'>Cart</NavLink></MenuItem>
-                    </Menu>
+                        <NavLink to='/user'>Sign Out</NavLink>
 
-                </NavWrapper>
-                <NavWrapperTablet>
-                    <NavLink to='/user'>
-                        <Icon><AiOutlineUser /></Icon>
-                    </NavLink>
-                    <NavLink to='/wish-list'>
-                        <Icon><AiOutlineHeart /></Icon>
-                    </NavLink>
-                    <NavLink to='/cart'>
-                        <Icon><AiOutlineShoppingCart /></Icon>
-                    </NavLink>
-                </NavWrapperTablet>
-            </HeaderSection3>
-        </Header>
+                    </button>
+                ) : (
+                    <button
+                        onClick={async () => {
+                            setUser(user);
+                        }}
+                    ><NavLink to='/user'>Sign Up</NavLink>
+                    </button>
+                )}
+            </UserInfo> */}
+
+            <Header>
+                <HeaderSection1>
+                    <Logo href="/" />
+                </HeaderSection1>
+                <HeaderSection2>
+                    <Search>
+                        <label htmlFor="search">
+                            <Input type="text" id="search" name="search" placeholder="Search for..." />
+                            <SearchIcon><AiOutlineSearch /></SearchIcon>
+                        </label>
+                    </Search>
+                </HeaderSection2>
+                <HeaderSection3>
+                    <NavWrapper>
+
+                        <OpenSearch>
+                            <Icon>
+                                <AiOutlineSearch onClick={() => setShowInput(!showInput)} />
+                            </Icon>
+                            {showInput && (
+                                <Input type="text" placeholder="Search for..."></Input>
+                            )}
+                        </OpenSearch>
+
+
+                        <Button
+                            id="fade-button"
+                            aria-controls={open ? 'fade-menu' : undefined}
+                            aria-haspopup="true"
+                            aria-expanded={open ? 'true' : undefined}
+                            onClick={handleClick}
+                            color={'primary'}
+                        >
+                            <Icon>
+                                <FaBars color="#112D4E" />
+                            </Icon>
+                        </Button>
+                        <Menu
+                            id="fade-menu"
+                            MenuListProps={{
+                                'aria-labelledby': 'fade-button',
+                            }}
+                            anchorEl={anchorEl}
+                            open={open}
+                            onClose={handleClose}
+                        >
+                            <MenuItem onClick={handleClose}><NavLink to='/user'>User</NavLink></MenuItem>
+                            <MenuItem onClick={handleClose}><NavLink to='/wish-list'>Wishlist</NavLink></MenuItem>
+                            <MenuItem onClick={handleClose}><NavLink to='/cart'>Cart</NavLink></MenuItem>
+                        </Menu>
+
+                    </NavWrapper>
+                    <NavWrapperTablet>
+                        <NavLink to='/user'>
+                            <Icon><AiOutlineUser /></Icon>
+                        </NavLink>
+                        <NavLink to='/wish-list'>
+                            <Icon><AiOutlineHeart /></Icon>
+                        </NavLink>
+                        <NavLink to='/cart'>
+                            <Icon><AiOutlineShoppingCart /></Icon>
+                        </NavLink>
+                    </NavWrapperTablet>
+                </HeaderSection3>
+
+            </Header></>
 
     )
 }

@@ -1,8 +1,11 @@
-import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
+import { Link, useParams } from "react-router-dom"
 import styled from "styled-components"
+import Card from "../components/Categories/Card"
 import ContentContainer from "../components/ContentContainer/ContentContainer"
 import Footer from "../components/Footer/Footer"
 import SideBar from "../components/SideBar/SideBar"
+import Post from "../Interfaces"
 
 const Wrapper = styled.aside`
 display: flex;
@@ -68,54 +71,25 @@ const Header = styled.div`
 margin-top: 0;
 }
 `
-const Products: React.FC = () => {
+const Products: React.FC=()=> {
+    const [products, setProduct] = useState([])
+    const { category} = useParams()
+    useEffect(() => {
+        fetch(`https://fakestoreapi.com/products/category/${category}`)
+            .then(response => response.json())
+            .then(data => setProduct(data))
+    }, [category])
     return (
         <><ContentContainer>
-
             <Wrapper>
-                <SideBar />
+                {/* <SideBar data={data} /> */}
                 <CardWrapper>
                     <Header>Category Name</Header>
-                    <StyledCard onClick={(): void => { }} to={`/product-name`}>
-                        <img src='' alt="" />
-                        <Name>Item name</Name>
-                    </StyledCard>
-                    <StyledCard onClick={(): void => { }} to={'/product-name'}>
-                        <img src='' alt="" />
-                        <div>Item name</div>
-                    </StyledCard>
-                    <StyledCard onClick={(): void => { }} to={'/product-name'}>
-                        <img src='' alt="" />
-                        <div>Item name</div>
-                    </StyledCard>
-                    <StyledCard onClick={(): void => { }} to={'/product-name'}>
-                        <img src='' alt="" />
-                        <div>Item name</div>
-                    </StyledCard>
-                    <StyledCard onClick={(): void => { }} to={'/product-name'}>
-                        <img src='' alt="" />
-                        <div>Item name</div>
-                    </StyledCard>
-                    <StyledCard onClick={(): void => { }} to={`/product-name`}>
-                        <img src='' alt="" />
-                        <Name>Item name</Name>
-                    </StyledCard>
-                    <StyledCard onClick={(): void => { }} to={'/product-name'}>
-                        <img src='' alt="" />
-                        <div>Item name</div>
-                    </StyledCard>
-                    <StyledCard onClick={(): void => { }} to={'/product-name'}>
-                        <img src='' alt="" />
-                        <div>Item name</div>
-                    </StyledCard>
-                    <StyledCard onClick={(): void => { }} to={'/product-name'}>
-                        <img src='' alt="" />
-                        <div>Item name</div>
-                    </StyledCard>
-                    <StyledCard onClick={(): void => { }} to={'/product-name'}>
-                        <img src='' alt="" />
-                        <div>Item name</div>
-                    </StyledCard>
+                    {products.map((post)=>{
+                        return(
+                            <Card data={post} />          
+                        )
+                    })}
 
                 </CardWrapper>
             </Wrapper>

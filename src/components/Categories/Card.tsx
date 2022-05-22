@@ -1,17 +1,17 @@
+import { validateYupSchema } from "formik"
 import { Link, NavLink } from "react-router-dom"
 import styled from "styled-components"
+import Post from "../../Interfaces"
 
 const StyledCard = styled(Link)`
-width:200px;
-height:100px;
-background-color: aqua;
-font-weight: 700;
-border-radius: 6px;
-text-align: center;
-align-items: center;
-display: flex;
-justify-content: center;
-margin: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+  padding: 3rem;
+  color: #112D4E;
+  margin-bottom: 3rem;
 cursor: pointer;
   text-decoration: none;
     &:visited {
@@ -19,7 +19,6 @@ cursor: pointer;
     }
  transition: all 250ms ease-in-out;
   &:hover {
-    box-shadow: 0 4px 1rem -4px #000;
     transform: translateY(-3px);
   }
 @media screen and (min-width: 426px) {
@@ -31,51 +30,36 @@ cursor: pointer;
   height: 170px;
 }
 `
-
-const Wrap = styled.div`
-display: flex;
-flex-flow: row wrap;
-width: 100%;
-max-width:64rem;
-margin-bottom:50px;
-justify-content:center;
+const Image = styled.img`
+  width: 150px;
+  height: 150px;
+  transition: all 0.3s ease;
 `
 
-const Card: React.FC = () => {
-    return (
-        <>
-            <Wrap>
-                <StyledCard onClick={(): void => { }} to={`/category-name`}>
-                    <img src='' alt="" />
-                    <div>Category 1</div>
-                </StyledCard>
-                <StyledCard onClick={(): void => { }} to={`/category-name`}>
-                    <img src='' alt="" />
-                    <div>Category 2</div>
-                </StyledCard>
-                <StyledCard onClick={(): void => { }} to={`/category-name`}>
-                    <img src='' alt="" />
-                    <div>Category 3</div>
-                </StyledCard>
-                <StyledCard onClick={(): void => { }} to={`/category-name`}>
-                    <img src='' alt="" />
-                    <div>Category 4</div>
-                </StyledCard>
-                <StyledCard onClick={(): void => { }} to={`/category-name`}>
-                    <img src='' alt="" />
-                    <div>Category 5</div>
-                </StyledCard>
-                <StyledCard onClick={(): void => { }} to={`/category-name`}>
-                    <img src='' alt="" />
-                    <div>Category 6</div>
-                </StyledCard>
+const Wrapper = styled.div`
+width: 100%;
+`
 
-            </Wrap>
+const Title = styled.div`
+  font-weight:bold;
+  font-size: 12px;
+`
 
-        </>
+const Card: React.FC<{ data: Post }> = ({ data }) => {
+  const { id, image, title} = data;
+  return (
+    <>
+      <StyledCard onClick={(): void => { }} to={`/product/${id}`}>
+        <Image src={image} alt={''} />
+        <Wrapper>
+          <Title>{title}</Title>
+        </Wrapper>
+      </StyledCard>
+
+    </>
 
 
-    )
+  )
 }
 
 export default Card
