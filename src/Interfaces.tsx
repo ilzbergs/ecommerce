@@ -5,7 +5,6 @@ interface Post {
    description:string;
    category:string;
    price:number;
-
 }
 
 export default Post;

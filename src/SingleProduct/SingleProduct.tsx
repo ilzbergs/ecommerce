@@ -71,7 +71,7 @@ font-size: 30px;
 
 `
 
-const SingleProduct: React.FC<{ data: Post }> = ({ data }) => {
+const SingleProduct: React.FC<{data: Post  }> = ({ data }) => {
     const { id, image, description, price, title } = data;
     const [isActive, setIsActive] = useState(false);
     const handleClick = () => {

@@ -30,15 +30,6 @@ function App() {
   const [user, setUser] = useState()
   const providerValue = useMemo(() => ({ user, setUser }), [user, setUser])
 
-
-
-
-
-
-
-
-
-
   return (
     <><GlobalStyle />
       {/* <UserContext.Provider value={providerValue}> */}
