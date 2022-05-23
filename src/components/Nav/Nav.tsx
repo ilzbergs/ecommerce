@@ -9,7 +9,7 @@ import UserContext from "../../UserContext";
 import LoginForm from "../Login/LoginForm";
 
 
-const Header = styled.div`
+const Header = styled.header`
     display: flex;
     padding: 0;
     width: 100%;
@@ -171,7 +171,7 @@ const Nav: React.FC = () => {
                 <HeaderSection2>
                     <Search>
                         <label htmlFor="search">
-                            <Input type="text" id="search" name="search" placeholder="Search for..." />
+                            <Input type="text" id="search" name="search" placeholder="Search for  me..." />
                             <SearchIcon><AiOutlineSearch /></SearchIcon>
                         </label>
                     </Search>

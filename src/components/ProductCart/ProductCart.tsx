@@ -1,6 +1,8 @@
 import styled from "styled-components"
 import { AiOutlineClose } from "react-icons/ai";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import CartContext from "../../CartContext";
+import Post from "../../Interfaces";
 
 const Container = styled.div`
 width: 100%;
@@ -69,29 +71,33 @@ width: 8rem;
 height: 1.5rem;
 }
 `
-const Product: React.FC = () => {
+const ProductCart: React.FC<{ data: Post }> = ({ data }) => {
+    const { image, title, price } = data;
     const [state, setState] = useState(1);
+    
+
     return (
         <Container>
             <Wrapper>
-                <Image src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg" alt="" />
+                <Image src={image} alt="" />
                 <InfoSideWrapper>
-                    <Text>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</Text>
-                    <Price>100.00 €</Price>
+                    <Text>{title}
+                    </Text>
+                    <Price>{price*state} €</Price>
                     <Input
                         type="number"
                         value={state}
                         min='1'
                         max='10'
                         onChange={e => {
-                            setState(Number(e.target.value));
+                            setState(Number(e.target.value))
                         }}
                     />
                 </InfoSideWrapper>
-                <CloseBtn onClick={(): void => { console.log('Clicked close button') }}><AiOutlineClose /></CloseBtn>
+                <CloseBtn><AiOutlineClose /></CloseBtn>
             </Wrapper>
         </Container>
     )
 }
 
-export default Product
+export default ProductCart

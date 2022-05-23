@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
+import CartContext from './CartContext';
 import LoginForm from './components/Login/LoginForm';
 import Nav from './components/Nav/Nav';
 import SignUpForm from './components/SignUp/SignUpForm';
@@ -28,11 +29,15 @@ const GlobalStyle = createGlobalStyle`
 
 function App() {
   const [user, setUser] = useState()
+  const [cartValue, setCartValue] = useState([]);
   const providerValue = useMemo(() => ({ user, setUser }), [user, setUser])
 
   return (
     <><GlobalStyle />
       {/* <UserContext.Provider value={providerValue}> */}
+      <CartContext.Provider value={{ cartValue, setCartValue }}>
+
+     
         <BrowserRouter>
           <Nav />
           <Routes>
@@ -46,6 +51,7 @@ function App() {
             <Route path='/product/:id' element={<Product />} />
           </Routes>
         </BrowserRouter>
+        </CartContext.Provider>
       {/* </UserContext.Provider> */}
     </>
 

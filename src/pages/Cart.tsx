@@ -1,7 +1,12 @@
+import { dividerClasses } from "@mui/material"
+import { Key, useContext } from "react"
 import styled from "styled-components"
+import CartContext from "../CartContext"
 import ContentContainer from "../components/ContentContainer/ContentContainer"
 import Footer from "../components/Footer/Footer"
-import ProductList from "../components/ProductCart/ProductList"
+import ProductCart from "../components/ProductCart/ProductCart"
+import Post from "../Interfaces"
+// import ProductList from "../components/ProductCart/ProductList"
 
 const Header = styled.div`
 width: 100%;
@@ -18,16 +23,25 @@ display: none;
 `
 
 const Cart: React.FC = () => {
+    const { cartValue } = useContext(CartContext);
     return (
         <>
             <ContentContainer>
-                 <Header>
-                <div>Prece</div>
-                <div></div>
-                <div>Cena</div>
-                <div>Daudzums</div>
-            </Header>
-                <ProductList/>
+                <Header>
+                    <div>Item</div>
+                    <div></div>
+                    <div>Price</div>
+                    <div>Amount</div>
+                </Header>
+                {cartValue &&
+                    cartValue.map((data: Post) => {
+                        return (<>
+                            <ProductCart key={data.id} data={data} />
+                            <button>Checkout</button>
+                            <div>Price total: €</div>
+                        </>);
+                    })
+                }          
             </ContentContainer>
             <Footer />
         </>

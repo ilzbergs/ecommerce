@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Post from "../../Interfaces";
+
 
 const Wrapper = styled.aside`
   padding-left: 45px;
@@ -35,6 +35,7 @@ const ListName = styled.button`
 `;
 const CatName = styled(Link)`
   list-style: none;
+  text-transform: capitalize;
   font-size: 16px;
   display: flex;
   align-items: center;
@@ -96,7 +97,7 @@ const SideBar: React.FC = () => {
                   return (
                     <CatName
                       key={category}
-                      onClick={(): void => {}}
+                      onClick={(): void => { }}
                       to={`/category/${category}`}
                     >
                       {category}

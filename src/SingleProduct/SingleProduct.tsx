@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import Post from "../Interfaces";
 import { AiOutlineHeart } from "react-icons/ai";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import CartContext from "../CartContext";
 
 const StyledCard = styled.div`
   width: 100%;
@@ -71,18 +72,22 @@ const Wishlist = styled.div`
 
 const SingleProduct: React.FC<{ data: Post }> = ({ data }) => {
   const { image, description, price, title } = data;
+  const { cartValue, setCartValue } = useContext(CartContext);
   const [isActive, setIsActive] = useState(false);
   const handleClick = () => {
     setIsActive((current) => !current);
   };
+
+  const addToCart = (product: Post) => {
+    !cartValue.find((item: { id: number; }) => item.id === product.id) &&
+      setCartValue([...cartValue, product]);
+  };
   return (
     <>
       <StyledCard>
+        <Title>{title}</Title>
         <Wrapper>
-          <div>
-            <Title>{title}</Title>
-            <Image src={image} alt="" />
-          </div>
+          <Image src={image} alt="" />
           <Info>
             <Wishlist>
               <AiOutlineHeart
@@ -92,8 +97,8 @@ const SingleProduct: React.FC<{ data: Post }> = ({ data }) => {
                 onClick={() => handleClick()}
               />
             </Wishlist>
-            <Price>{price}</Price>
-            <Btn onClick={() => console.log("added to cart")}>Add to cart</Btn>
+            <Price>Price: {price} €</Price>
+            <Btn onClick={() => addToCart(data)}>Add to cart</Btn>
           </Info>
         </Wrapper>
         <Desription>{description}</Desription>

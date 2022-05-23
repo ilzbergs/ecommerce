@@ -3,7 +3,7 @@ import { BsFacebook } from "react-icons/bs";
 import { BsTwitter } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
 
-const FooterContainer = styled.div`
+const FooterContainer = styled.footer`
  width: 100%;
     /* max-width: 64rem; */
     margin: 0 auto;
@@ -16,14 +16,14 @@ const FooterContainer = styled.div`
 
 `
 
-const FooterRow = styled.footer`
+const FooterRow = styled.div`
 margin-top: 2rem;
 bottom: 0;
 width: 100%;
 max-width: 64rem;
 `
 
-const FooterText = styled.footer`
+const FooterText = styled.div`
   text-align: center;
   padding-bottom: 1rem;
   font-size: 16px;
