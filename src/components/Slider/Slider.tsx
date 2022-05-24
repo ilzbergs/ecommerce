@@ -44,24 +44,31 @@ const sliderData = [
 const StyledSlider = styled.div`
     margin-bottom: 4rem;
     width: 100%;
+    position: relative;
+    z-index: 1;
     max-width: 64rem;
     padding-top:2rem;
 `
 const NavButton = styled.button<{ left?: boolean }>`
-  position: absolute;
+  position:absolute;
   top: 20%;
   width: 2rem;
   height: 2rem;
   padding: 1rem;
   background: url(${arrowR}) center/30% no-repeat;
   border-radius: 50%;
-  right: 1rem;
+  right: 3rem;
+  background-color: white;
+  opacity: 0.3;
+  top: 10rem;
+  cursor: pointer;
   ${(props) =>
         props &&
         props.left &&
         `
     background-image: url(${arrowL});
-    left: 1rem;
+    left: 3rem;
+    top:10rem;
     right: unset; 
   `}
 `;
@@ -70,9 +77,14 @@ const Banner = styled.div<{ bg: string }>`
   width: 100%;
   height: 16rem;
   text-align: center;
-  cursor: pointer;
   background: url(${(props) => props && props.bg}) center/90% no-repeat;
 `;
+
+const Title = styled.h3`
+font-size: 24px;
+color: white;
+text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+`
 const Slider: React.FC = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const prevHandler = () => {
@@ -93,7 +105,7 @@ const Slider: React.FC = () => {
                     key={sliderData[currentSlide].id}
                     bg={sliderData[currentSlide].img}
                 >
-                    <h3>{sliderData[currentSlide].title}</h3>
+                    <Title>{sliderData[currentSlide].title}</Title>
                 </Banner>
                 <NavButton left onClick={prevHandler} />
                 <NavButton onClick={nextHandler} />
