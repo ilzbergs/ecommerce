@@ -143,7 +143,7 @@ const Nav: React.FC = () => {
 
     return (
         <>
-            {/* <UserInfo>
+            <UserInfo>
                 <pre>{JSON.stringify(user, null, 2)}</pre>
                 {user ? (
                     <button
@@ -162,7 +162,7 @@ const Nav: React.FC = () => {
                     ><NavLink to='/user'>Sign Up</NavLink>
                     </button>
                 )}
-            </UserInfo> */}
+            </UserInfo>
 
             <Header>
                 <HeaderSection1>
@@ -171,7 +171,7 @@ const Nav: React.FC = () => {
                 <HeaderSection2>
                     <Search>
                         <label htmlFor="search">
-                            <Input type="text" id="search" name="search" placeholder="Search for  me..." />
+                            <Input type="text" id="search" name="search" placeholder="Search for..." />
                             <SearchIcon><AiOutlineSearch /></SearchIcon>
                         </label>
                     </Search>

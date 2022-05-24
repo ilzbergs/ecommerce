@@ -37,7 +37,7 @@ const HomePage: React.FC = () => {
                         <Wrap>
                             {data.map((post) => {
                                 return (
-                                    <Card data={post} />
+                                    <Card data={post} key={post}/>
                                 )
                             })}
                         </Wrap>

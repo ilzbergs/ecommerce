@@ -3,6 +3,7 @@ import Post from "../Interfaces";
 import { AiOutlineHeart } from "react-icons/ai";
 import { useContext, useState } from "react";
 import CartContext from "../CartContext";
+import WishListContext from "../WishListContext";
 
 const StyledCard = styled.div`
   width: 100%;
@@ -73,6 +74,7 @@ const Wishlist = styled.div`
 const SingleProduct: React.FC<{ data: Post }> = ({ data }) => {
   const { image, description, price, title } = data;
   const { cartValue, setCartValue } = useContext(CartContext);
+  const { wishListValue, setWishListValue } = useContext(WishListContext);
   const [isActive, setIsActive] = useState(false);
   const handleClick = () => {
     setIsActive((current) => !current);
@@ -82,6 +84,14 @@ const SingleProduct: React.FC<{ data: Post }> = ({ data }) => {
     !cartValue.find((item: { id: number; }) => item.id === product.id) &&
       setCartValue([...cartValue, product]);
   };
+
+  const addWishList = (product: Post) => {
+    !wishListValue.find((item: { id: number; }) => item.id === product.id) &&
+    setWishListValue([...wishListValue, product]);
+  };
+
+
+
   return (
     <>
       <StyledCard>
@@ -89,7 +99,7 @@ const SingleProduct: React.FC<{ data: Post }> = ({ data }) => {
         <Wrapper>
           <Image src={image} alt="" />
           <Info>
-            <Wishlist>
+            <Wishlist onClick={() => addWishList(data)}>
               <AiOutlineHeart
                 style={{
                   color: isActive ? "red" : "",

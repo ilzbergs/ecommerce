@@ -1,8 +1,8 @@
+import { Input } from "@mui/material"
+import { useState } from "react"
+import { AiOutlineClose } from "react-icons/ai"
 import styled from "styled-components"
-import { AiOutlineClose } from "react-icons/ai";
-import { useContext, useState } from "react";
-import CartContext from "../../CartContext";
-import Post from "../../Interfaces";
+import Post from "../Interfaces"
 
 const Container = styled.div`
 width: 100%;
@@ -62,36 +62,20 @@ const Text = styled.p`
 width: 180px;
 max-width: 180px;
 `
-const Price = styled.p`
-font-weight: bold;
-`
-const Input = styled.input`
-width: 8rem;
-@media screen and (min-width: 768px) {
-height: 1.5rem;
-}
-`
-const ProductCart: React.FC<{ data: Post }> = ({ data }) => {
-    const { image, title, price } = data;
-    const [state, setState] = useState(1);
+
+const WishListCard: React.FC<{ data: Post }> = ({ data }) => {
+    const { image, title} = data;
     
+    
+    
+
     return (
         <Container>
             <Wrapper>
                 <Image src={image} alt="" />
                 <InfoSideWrapper>
                     <Text>{title}
-                    </Text>
-                    <Price>{price*state} €</Price>
-                    <Input
-                        type="number"
-                        value={state}
-                        min='1'
-                        max='10'
-                        onChange={e => {
-                            setState(Number(e.target.value))
-                        }}
-                    />
+                    </Text> 
                 </InfoSideWrapper>
                 <CloseBtn><AiOutlineClose /></CloseBtn>
             </Wrapper>
@@ -99,4 +83,4 @@ const ProductCart: React.FC<{ data: Post }> = ({ data }) => {
     )
 }
 
-export default ProductCart
+export default WishListCard

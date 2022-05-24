@@ -1,178 +1,88 @@
-import React, { useEffect } from "react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
 
-function SignUpForm() {
-    const {
-        values,
-        errors,
-        touched,
-        getFieldProps,
-        submitCount,
-        handleSubmit,
-        setValues,
-        isSubmitting,
-        setSubmitting,
-        resetForm,
-        isValid,
-        dirty
-    } = useFormik({
-        initialValues: {
-            firstName: "",
-            lastName: "",
-            username: "",
-            email: "",
-            password: ""
-        },
-        validationSchema: Yup.object().shape({
-            firstName: Yup.string().required("Required"),
-            lastName: Yup.string().required("Required"),
-            username: Yup.string()
-                .min(5, "Must be more than 5 characters")
-                .max(20, "Must be less than 50 characters"),
-            email: Yup.string()
-                .email("Invalid email address")
-                .required("Required"),
-            password: Yup.string()
-                .min(8, "Must be more than 8 characters")
-                .required("Required")
-        }),
-        onSubmit: values => {
-            // Username is not required. In that case if the user doesn't provide one, we give them a default
-            if (values.username.length < 1) {
-                // We added a `username` value for the user which is everything before @ in their email address.
-                setValues({
-                    ...values,
-                    username: `@${values.email.split("@")[0]}`
-                });
-            }
-            console.log(JSON.stringify(values, null, 2));
+import { Field, Form, Formik } from "formik";
+import * as yup from "yup";
+import ContentContainer from "../ContentContainer/ContentContainer";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-            setTimeout(() => {
-                setSubmitting(false);
-                alert("form submitted");
-                resetForm();
-                // route to success page
-            }, 1000);
-        }
+const LoginWrapper = styled(Form)`
+display: flex;
+justify-content: center;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+height: 80vh;
+`
+
+const StyledField = styled(Field)`
+width: 20rem;
+height: 2rem;
+border-radius: 10px;
+border: 1px solid #112D4E;
+margin: 1rem;
+`
+const Btn = styled.button`
+background-color: #112D4E;
+width: 10rem;
+height: 2rem;
+color: white;
+text-transform: uppercase;
+`
+const validationSchema = yup.object().shape({
+        firstName: yup.string().required('Please Enter your name'),
+        lastName: yup.string().required('Please Enter your last name'),
+        email: yup.string().required('Please Enter your email').email(),
+        confirmEmail: yup.string().required('Please verify email').email(),
+        password: yup.string().required('Please Enter your password'),
+        confirmPassword: yup.string().required('Confirm password').matches(/^.(?=.{8,}).$/,
+            "Password must contain at least 8 characters")
+            .oneOf([yup.ref('password'), null], 'Passwords must match'),
     });
 
+
+const SignUpForm: React.FC = () => {
+    const submitHandler = (values: {
+        firstName: string;
+        lastName: string;
+        email: string;
+        confirmEmail: string;
+        password: string;
+        confirmPassword: string;
+    }) => {
+        console.log(values);
+    };
+    
     return (
-        <>
-            <div className="formWrapper">
-                <form className="baseForm" noValidate onSubmit={handleSubmit}>
-                    <header className="baseFormHeader">
-                        <h1 className="baseFormHeading">register</h1>
-                    </header>
-                    <div className="formRow col-2">
-                        <div className="formFieldWrap">
-                            <label className="formFieldLabel" htmlFor="firstName">
-                                first name
-                            </label>
-                            <span className="errorMessage">
-                                {touched["firstName"] && errors["firstName"]}
-                            </span>
-                            <div className="formFieldWrapInner">
-                                <input
-                                    type="text"
-                                    id="firstName"
-                                    className="firstName formField"
-                                    {...getFieldProps("firstName")}
-                                />
-                            </div>
-                        </div>
-                        <div className="formFieldWrap">
-                            <label className="formFieldLabel" htmlFor="lastName">
-                                last name
-                            </label>
-                            <span className="errorMessage">
-                                {touched["lastName"] && errors["lastName"]}
-                            </span>
-                            <div className="formFieldWrapInner">
-                                <input
-                                    type="text"
-                                    {...getFieldProps("lastName")}
-                                    id="lastName"
-                                    className="lastName formField"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                    <div className="formRow col-1">
-                        <label className="formFieldLabel" htmlFor="username">
-                            username
-                        </label>
-                        <span className="errorMessage">
-                            {touched["username"] && errors["username"]}
-                        </span>
-                        <div className="formFieldWrapInner">
-                            <input
-                                type="text"
-                                {...getFieldProps("username")}
-                                id="username"
-                                className="username formField"
-                            />
-                        </div>
-                        <span className="passwordCue">Optional</span>
-                    </div>
-                    <div className="formRow col-1">
-                        <label className="formFieldLabel" htmlFor="email">
-                            email address
-                        </label>
-                        <span className="errorMessage">
-                            {touched["email"] && errors["email"]}
-                        </span>
-                        <div className="formFieldWrapInner">
-                            <input
-                                type="email"
-                                {...getFieldProps("email")}
-                                id="email"
-                                className="email formField"
-                            />
-                        </div>
-                    </div>
-                    <div className="formRow col-1">
-                        <label className="formFieldLabel" htmlFor="password">
-                            password
-                        </label>
-                        <span className="errorMessage">
-                            {touched["password"] && errors["password"]}
-                        </span>
-                        <div className="formFieldWrapInner">
-                            <input
-                                type="password"
-                                {...getFieldProps("password")}
-                                id="password"
-                                className="password formField"
-                            />
-                        </div>
-                        <span className="passwordCue">Minimum length is 8 characters</span>
-                    </div>
-                    <div className="formRow col-1">
-                        {/* When isValid is false and when isSubmitting is true */}
-                        <button
-                            type="submit"
-                            disabled={!(isValid && dirty) || isSubmitting}
-                        >
-                            {(isSubmitting && "Working on it...") || "Submit"}
-                        </button>
-                    </div>
-                </form>
-            </div>
-            <div className="console">
-                <header className="baseFormHeader">
-                    <p className="baseFormHeading">Form Submission Output</p>
-                    {submitCount > 0 && <pre>{JSON.stringify(values, null, 2)}</pre>}
-                </header>
-            </div>
-            <div className="console">
-                <header className="baseFormHeader">
-                    <p className="baseFormHeading">Errors</p>
-                    {<pre>{JSON.stringify(errors, null, 2)}</pre>}
-                </header>
-            </div>
-        </>
-    );
+        <ContentContainer>
+            <Formik
+                initialValues={{
+                    firstName: '',
+                    lastName: '',
+                    email:'',
+                    confirmEmail: '',
+                    password: '',
+                    confirmPassword: '',
+                }}
+                onSubmit={(values, { resetForm }) => {
+                    submitHandler(values)
+                    resetForm()
+                }}
+                validationSchema={validationSchema}
+               
+            >
+                <LoginWrapper>
+                    <StyledField type="text" id="firstName" name="firstName" placeholder="Enter yor name" />
+                    <StyledField type="text" id="lastName" name="lastName" placeholder="Enter your last name" />
+                    <StyledField type="email" id="email" name="email" value="" placeholder="Enter email" />
+                    <StyledField type="email" id="confEmail" name="confEmail" placeholder="Confirm email" />
+                    <StyledField type="password" id="password" name="pasword" placeholder="Enter password" />
+                    <StyledField type="password" id="confPassword" name="confPassword" placeholder="Confirm password" />
+                    <Btn type="submit">Submit</Btn>
+                    <p>Already have account? <Link onClick={() => { }} to={`/login`}>Sign up!</Link></p>
+                </LoginWrapper>
+            </Formik>
+        </ContentContainer>
+    )
 }
 
 export default SignUpForm;

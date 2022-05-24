@@ -1,12 +1,13 @@
 import { createContext } from "react";
+import { string } from "yup";
 
 type UserContextType = {
-    user: string | '',
-    setUser: (user: string | '' ) => void
+    user: string | any,
+    setUser: (user: any) => void
 }
 
 const UserContext = createContext<UserContextType>({
-    user: '',
+    user:  '',
     setUser: () => {}
 })
 
