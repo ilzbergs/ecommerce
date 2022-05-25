@@ -99,6 +99,7 @@ const SideBar: React.FC = () => {
                       key={category}
                       onClick={(): void => { }}
                       to={`/category/${category}`}
+                     
                     >
                       {category}
                     </CatName>

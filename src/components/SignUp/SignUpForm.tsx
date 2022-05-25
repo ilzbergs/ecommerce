@@ -67,7 +67,7 @@ const SignUpForm: React.FC = () => {
                     submitHandler(values)
                     resetForm()
                 }}
-                validationSchema={validationSchema}
+                // validationSchema={validationSchema}
                
             >
                 <LoginWrapper>
