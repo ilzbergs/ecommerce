@@ -7,7 +7,6 @@ import Footer from "../components/Footer/Footer"
 import SideBar from "../components/SideBar/SideBar"
 import Slider from "../components/Slider/Slider"
 
-
 const Wrapper = styled.div`
 display: flex;
 `

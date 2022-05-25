@@ -87,10 +87,8 @@ const SingleProduct: React.FC<{ data: Post }> = ({ data }) => {
 
   const addWishList = (product: Post) => {
     !wishListValue.find((item: { id: number; }) => item.id === product.id) &&
-    setWishListValue([...wishListValue, product]);
+      setWishListValue([...wishListValue, product]);
   };
-
-
 
   return (
     <>

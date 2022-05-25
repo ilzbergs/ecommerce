@@ -1,4 +1,3 @@
-import { validateYupSchema } from "formik"
 import { Link, NavLink } from "react-router-dom"
 import styled from "styled-components"
 import Post from "../../Interfaces"
@@ -43,9 +42,8 @@ const Btn = styled.button`
  cursor:pointer;
  margin-top:0.5rem
 `
-
 const Card: React.FC<{ data: Post }> = ({ data }) => {
-  const { id, image, title, price} = data;
+  const { id, image, title, price } = data;
   return (
     <>
       <StyledCard onClick={(): void => { }} to={`/product/${id}`}>
@@ -53,13 +51,10 @@ const Card: React.FC<{ data: Post }> = ({ data }) => {
         <Wrapper>
           <Title>{title}</Title>
           <div>{price} €</div>
-         <Btn type="button">More info...</Btn>
+          <Btn type="button">More info...</Btn>
         </Wrapper>
       </StyledCard>
-
     </>
-
-
   )
 }
 

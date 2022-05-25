@@ -13,7 +13,6 @@ align-items: center;
 justify-content: center;
 height: 80vh;
 `
-
 const StyledField = styled(Field)`
 width: 20rem;
 height: 2rem;
@@ -29,15 +28,15 @@ color: white;
 text-transform: uppercase;
 `
 const validationSchema = yup.object().shape({
-        firstName: yup.string().required('Please Enter your name'),
-        lastName: yup.string().required('Please Enter your last name'),
-        email: yup.string().required('Please Enter your email').email(),
-        confirmEmail: yup.string().required('Please verify email').email(),
-        password: yup.string().required('Please Enter your password'),
-        confirmPassword: yup.string().required('Confirm password').matches(/^.(?=.{8,}).$/,
-            "Password must contain at least 8 characters")
-            .oneOf([yup.ref('password'), null], 'Passwords must match'),
-    });
+    firstName: yup.string().required('Please Enter your name'),
+    lastName: yup.string().required('Please Enter your last name'),
+    email: yup.string().required('Please Enter your email').email(),
+    confirmEmail: yup.string().required('Please verify email').email(),
+    password: yup.string().required('Please Enter your password'),
+    confirmPassword: yup.string().required('Confirm password').matches(/^.(?=.{8,}).$/,
+        "Password must contain at least 8 characters")
+        .oneOf([yup.ref('password'), null], 'Passwords must match'),
+});
 
 
 const SignUpForm: React.FC = () => {
@@ -51,14 +50,13 @@ const SignUpForm: React.FC = () => {
     }) => {
         console.log(values);
     };
-    
     return (
         <ContentContainer>
             <Formik
                 initialValues={{
                     firstName: '',
                     lastName: '',
-                    email:'',
+                    email: '',
                     confirmEmail: '',
                     password: '',
                     confirmPassword: '',
@@ -67,8 +65,7 @@ const SignUpForm: React.FC = () => {
                     submitHandler(values)
                     resetForm()
                 }}
-                // validationSchema={validationSchema}
-               
+            // validationSchema={validationSchema}             
             >
                 <LoginWrapper>
                     <StyledField type="text" id="firstName" name="firstName" placeholder="Enter yor name" />

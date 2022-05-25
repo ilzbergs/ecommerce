@@ -103,7 +103,6 @@ const Input = styled.input`
 const SearchIcon = styled.i`
     font-size: 24px;
    position: absolute;
-   /* top: 30px; */
 `
 const Icon = styled.i`
     font-size: 24px;
@@ -128,7 +127,6 @@ const Login = styled.button`
 height: 1.5rem;
 `
 
-
 const Nav: React.FC = () => {
     const { user, setUser } = useContext(UserContext);
     const [showInput, setShowInput] = useState(false)
@@ -140,7 +138,6 @@ const Nav: React.FC = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
-
     return (
         <>
             <UserInfo>
@@ -152,7 +149,6 @@ const Nav: React.FC = () => {
                         }}
                     >
                         <NavLink to='/user'>Sign Out</NavLink>
-
                     </button>
                 ) : (
                     <button
@@ -178,7 +174,6 @@ const Nav: React.FC = () => {
                 </HeaderSection2>
                 <HeaderSection3>
                     <NavWrapper>
-
                         <OpenSearch>
                             <Icon>
                                 <AiOutlineSearch onClick={() => setShowInput(!showInput)} />
@@ -187,8 +182,6 @@ const Nav: React.FC = () => {
                                 <Input type="text" placeholder="Search for..."></Input>
                             )}
                         </OpenSearch>
-
-
                         <Button
                             id="fade-button"
                             aria-controls={open ? 'fade-menu' : undefined}
@@ -214,7 +207,6 @@ const Nav: React.FC = () => {
                             <MenuItem onClick={handleClose}><NavLink to='/wish-list'>Wishlist</NavLink></MenuItem>
                             <MenuItem onClick={handleClose}><NavLink to='/cart'>Cart</NavLink></MenuItem>
                         </Menu>
-
                     </NavWrapper>
                     <NavWrapperTablet>
                         <NavLink to='/user'>
@@ -228,9 +220,7 @@ const Nav: React.FC = () => {
                         </NavLink>
                     </NavWrapperTablet>
                 </HeaderSection3>
-
             </Header></>
-
     )
 }
 

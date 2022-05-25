@@ -20,14 +20,12 @@ justify-content: space-around;
 display: none;
 }
 `
-
 const Price = styled.div`
 font-size: 30px;
 width: 100%;
 text-align: right;
 margin-right: 10rem;
 `
-
 const Btn = styled.button`
 width: 14rem;
 height: 2rem;
@@ -41,31 +39,27 @@ cursor: pointer;
     transform: scale(1.1);
 }
 `
-
 const Cart: React.FC = () => {
     const { cartValue } = useContext(CartContext);
     return (
-        <>
+            <>
             <ContentContainer>
-                <Header>
-                    <div>Item</div>
-                    <div></div>
-                    <div>Price</div>
-                    <div>Amount</div>
-                </Header>
-                {cartValue &&
-                    cartValue.map((data: Post) => {
-                        return (
-                            <ProductCart key={data.id} data={data} />
-                        )
-
-                    })
-                }
-                <Price>Price total:     €</Price>
-                <Btn>Checkout</Btn>
-            </ContentContainer>
-            <Footer />
-        </>
+            <Header>
+                <div>Item</div>
+                <div></div>
+                <div>Price</div>
+                <div>Amount</div>
+            </Header>
+            {cartValue &&
+                cartValue.map((data: Post) => {
+                    return (
+                        <ProductCart key={data.id} data={data} />
+                    )
+                })}
+            <Price>Price total:     €</Price>
+            <Btn>Checkout</Btn>
+        </ContentContainer><Footer />
+        </> 
     )
 }
 export default Cart

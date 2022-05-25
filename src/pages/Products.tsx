@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Card from "../components/Categories/Card";
 import ContentContainer from "../components/ContentContainer/ContentContainer";

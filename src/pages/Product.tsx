@@ -1,11 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import styled from "styled-components";
 import ContentContainer from "../components/ContentContainer/ContentContainer";
 import Footer from "../components/Footer/Footer";
 import Post from "../Interfaces";
 import SingleProduct from "../SingleProduct/SingleProduct";
-import UserContext from "../UserContext";
 
 const Wrapper = styled.div`
   width: 100%;

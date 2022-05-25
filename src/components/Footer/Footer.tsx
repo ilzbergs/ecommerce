@@ -5,22 +5,18 @@ import { BsInstagram } from "react-icons/bs";
 
 const FooterContainer = styled.footer`
  width: 100%;
-    /* max-width: 64rem; */
-    margin: 0 auto;
-    display: flex;
-    flex-direction: row; 
-    justify-content:center;
-    align-items: center; 
-    /* position:fixed;
-    bottom: 0; */
-
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row; 
+  justify-content:center;
+  align-items: center; 
 `
 
 const FooterRow = styled.div`
-margin-top: 2rem;
-bottom: 0;
-width: 100%;
-max-width: 64rem;
+  margin-top: 2rem;
+  bottom: 0;
+  width: 100%;
+  max-width: 64rem;
 `
 
 const FooterText = styled.div`
@@ -56,17 +52,13 @@ const Footer: React.FC = () => {
             <SocIcons href="https://www.facebook.com/" target='_blank'><BsFacebook />
             </SocIcons>
             <SocIcons href="https://www.twitter.com/" target='_blank'><BsTwitter />
-
             </SocIcons>
             <SocIcons href="https://www.instagram.com/" target='_blank'><BsInstagram />
-
             </SocIcons>
-
           </SocialBar>
           <FooterText>@ 2022 my copyrights</FooterText>
         </FooterRow>
       </FooterContainer>
-
     </>
   )
 }

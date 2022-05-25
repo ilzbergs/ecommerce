@@ -65,7 +65,7 @@ const NavButton = styled.button<{ left?: boolean }>`
   ${(props) =>
         props &&
         props.left &&
-        `
+    `
     background-image: url(${arrowL});
     left: 3rem;
     top:10rem;

@@ -1,5 +1,3 @@
-import { Input } from "@mui/material"
-import { useState } from "react"
 import { AiOutlineClose } from "react-icons/ai"
 import styled from "styled-components"
 import Post from "../Interfaces"
@@ -64,10 +62,7 @@ max-width: 180px;
 `
 
 const WishListCard: React.FC<{ data: Post }> = ({ data }) => {
-    const { image, title} = data;
-    
-    
-    
+    const { image, title } = data;
 
     return (
         <Container>
@@ -75,7 +70,7 @@ const WishListCard: React.FC<{ data: Post }> = ({ data }) => {
                 <Image src={image} alt="" />
                 <InfoSideWrapper>
                     <Text>{title}
-                    </Text> 
+                    </Text>
                 </InfoSideWrapper>
                 <CloseBtn><AiOutlineClose /></CloseBtn>
             </Wrapper>
