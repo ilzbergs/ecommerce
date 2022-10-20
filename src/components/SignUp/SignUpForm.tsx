@@ -1,6 +1,6 @@
 
 import { Field, Form, Formik } from "formik";
-import * as yup from "yup";
+// import * as yup from "yup";
 import ContentContainer from "../ContentContainer/ContentContainer";
 import styled from "styled-components";
 import { Link } from "react-router-dom";

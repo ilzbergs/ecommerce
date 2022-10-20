@@ -1,7 +1,6 @@
 import styled from "styled-components"
 import { AiOutlineClose } from "react-icons/ai";
-import { useContext, useState } from "react";
-import CartContext from "../../CartContext";
+import { useState } from "react";
 import Post from "../../Interfaces";
 
 const Container = styled.div`
