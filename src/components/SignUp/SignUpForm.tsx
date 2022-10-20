@@ -27,16 +27,16 @@ height: 2rem;
 color: white;
 text-transform: uppercase;
 `
-const validationSchema = yup.object().shape({
-    firstName: yup.string().required('Please Enter your name'),
-    lastName: yup.string().required('Please Enter your last name'),
-    email: yup.string().required('Please Enter your email').email(),
-    confirmEmail: yup.string().required('Please verify email').email(),
-    password: yup.string().required('Please Enter your password'),
-    confirmPassword: yup.string().required('Confirm password').matches(/^.(?=.{8,}).$/,
-        "Password must contain at least 8 characters")
-        .oneOf([yup.ref('password'), null], 'Passwords must match'),
-});
+// const validationSchema = yup.object().shape({
+//     firstName: yup.string().required('Please Enter your name'),
+//     lastName: yup.string().required('Please Enter your last name'),
+//     email: yup.string().required('Please Enter your email').email(),
+//     confirmEmail: yup.string().required('Please verify email').email(),
+//     password: yup.string().required('Please Enter your password'),
+//     confirmPassword: yup.string().required('Confirm password').matches(/^.(?=.{8,}).$/,
+//         "Password must contain at least 8 characters")
+//         .oneOf([yup.ref('password'), null], 'Passwords must match'),
+// });
 
 
 const SignUpForm: React.FC = () => {

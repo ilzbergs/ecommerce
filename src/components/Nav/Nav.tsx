@@ -6,8 +6,6 @@ import { Button, Menu, MenuItem } from "@mui/material"
 import { AiOutlineUser, AiOutlineHeart, AiOutlineShoppingCart, AiOutlineSearch, } from "react-icons/ai";
 import { FaBars } from "react-icons/fa";
 import UserContext from "../../UserContext";
-import LoginForm from "../Login/LoginForm";
-
 
 const Header = styled.header`
     display: flex;
@@ -123,9 +121,9 @@ max-width: 64rem;
 align-items: center;
 margin: 0 auto;
 `
-const Login = styled.button`
-height: 1.5rem;
-`
+// const Login = styled.button`
+// height: 1.5rem;
+// `
 
 const Nav: React.FC = () => {
     const { user, setUser } = useContext(UserContext);

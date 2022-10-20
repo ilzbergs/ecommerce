@@ -15,11 +15,11 @@ display: flex;
 flex-flow: wrap;
 justify-content: center;
 `
-const Image = styled.img`
-width: 15rem;
-height: 10rem;
-margin: 0.5rem;
-`
+// const Image = styled.img`
+// width: 15rem;
+// height: 10rem;
+// margin: 0.5rem;
+// `
 const WishList: React.FC = () => {
     const { wishListValue } = useContext(WishListContext);
     return (
